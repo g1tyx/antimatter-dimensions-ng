@@ -4043,11 +4043,7 @@ function setAchieveTooltip() {
     arent.setAttribute('ach-tooltip', "在撕裂宇宙中,开启膨胀时间,不进行任何时间研究,不购买EP倍增器,树升级和打破永恒的前提下到达 "+shortenCosts(Decimal.pow(10, 18e5))+" IP.")
     ee.setAttribute('ach-tooltip', "拥有 "+shorten(Number.MAX_VALUE)+" 永恒次数.")
     oc.setAttribute('ach-tooltip', "在撕裂宇宙中,且开启了反膨胀时间拥有至少 "+shortenCosts(Decimal.pow(10, 375e3))+" EP 时进行幽灵化.")
-<<<<<<< HEAD
     btco.setAttribute('ach-tooltip', "当你在量子挑战6和8中,到达 "+shortenCosts(Decimal.pow(10, 165e7))+" 反物质后获得混合挑战1的奖励.")
-=======
-    btco.setAttribute('ach-tooltip', "Get a Paired Challenge 1 reward after you get "+shortenCosts(Decimal.pow(10, 165e7))+" antimatter in Quantum Challenges 6 and 8.")
->>>>>>> 0315ac85680e3215dd31c6360214a6ea9f508759
     tdc.setAttribute('ach-tooltip', "在混合挑战6+8中,开启反膨胀时间完成永恒挑战11且拥有超过 "+shortenCosts(Decimal.pow(10, 15500))+" IP .")
     igu.setAttribute('ach-tooltip', "在撕裂宇宙中开启反膨胀时间,不(购买任何时间研究,EP获取倍增器,树升级,打破永恒)的情况下到达 "+shortenCosts(Decimal.pow(10, 225e3))+" IP.")
 }
