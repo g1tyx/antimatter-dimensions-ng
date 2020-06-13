@@ -3194,12 +3194,12 @@ function toggleCrunchMode(freeze) {
 
 function toggleEternityConf() {
     player.options.eternityconfirm = !player.options.eternityconfirm
-    document.getElementById("eternityconf").textContent = "Eternity confirmation: O" + (player.options.eternityconfirm ? "N" : "FF")
+    document.getElementById("eternityconf").textContent = "永恒确认: O" + (player.options.eternityconfirm ? "N" : "FF")
 }
 
 function toggleDilaConf() {
     player.aarexModifications.dilationConf = !player.aarexModifications.dilationConf
-    document.getElementById("dilationConfirmBtn").textContent = "Dilation confirmation: O" + (player.aarexModifications.dilationConf ? "N" : "FF")
+    document.getElementById("dilationConfirmBtn").textContent = "膨胀时间确认: O" + (player.aarexModifications.dilationConf ? "N" : "FF")
 }
 
 
@@ -3729,7 +3729,7 @@ function import_save(type) {
 }
 
 function reset_game() {
-	if (!forceHardReset) if (!confirm("Do you really want to erase all your progress?")) return
+	if (!forceHardReset) if (!confirm("你确定要硬重置全部游戏进度?")) return
 	clearInterval(gameLoopIntervalId)
 	infiniteDetected = false
 	updateNewPlayer(true)
@@ -4357,7 +4357,7 @@ function sacrifice(auto = false) {
 document.getElementById("sacrifice").onclick = function () {
     if (player.eightAmount.eq(0)) return false
     if (!document.getElementById("confirmation").checked) {
-        if (!confirm("Dimensional Sacrifice will remove all of your first to seventh dimensions (with the cost and multiplier unchanged) for a boost to Eighth Dimension. It will take time to regain production.")) {
+        if (!confirm("维度献祭将会失去你所有维度1~7的进度来给维度8加成,如果倍率够高会很快恢复生产.")) {
             return false;
         }
     }
@@ -5442,7 +5442,7 @@ function updateRespecButtons() {
 function eternity(force, auto, presetLoad, dilated) {
     var id7unlocked = player.infDimensionsUnlocked[7]
     if (tmp.ngp3) if (tmp.qu.bigRip.active) id7unlocked = true
-    if ((player.infinityPoints.gte(Number.MAX_VALUE) && id7unlocked && (!player.options.eternityconfirm || auto || confirm("Eternity will reset everything except achievements and challenge records. You will also gain an Eternity point and unlock various upgrades."))) || force === true) {
+    if ((player.infinityPoints.gte(Number.MAX_VALUE) && id7unlocked && (!player.options.eternityconfirm || auto || confirm("永恒将会失去你的大部分进度,保留成就和挑战最佳纪录,同时你会获得EP点解锁一些非常强大的升级."))) || force === true) {
         if (force) player.currentEternityChall = "";
         if (player.currentEternityChall !== "" && player.infinityPoints.lt(player.eternityChallGoal)) return false
         if (player.thisEternity<player.bestEternity && !force) {
@@ -6911,7 +6911,7 @@ function startDilatedEternity(auto, shortcut) {
     if (!player.dilation.studies.includes(1)) return
 	failsafeDilateTime = true
     var onActive = player.dilation.active
-    if (!onActive && player.aarexModifications.dilationConf && !auto) if (!confirm("Dilating time will start a new eternity, and all of your Dimension/Infinity Dimension/Time Dimension multiplier's exponents and tickspeed multiplier's exponent will be reduced to ^ 0.75. If you can eternity while dilated, you'll be rewarded with tachyon particles based on your antimatter and tachyon particles.")) return
+    if (!onActive && player.aarexModifications.dilationConf && !auto) if (!confirm("进入膨胀时间,你的普通维度/无限维度/时间维度/时间间隔的指数增幅降低到^0.75.在膨胀时间中到达永恒则会基于你目前的反物质(正相关)和已经拥有的超光速粒子(反相关)给予你超光速粒子")) return
     giveAchievement("I told you already, time is relative")
     if (tmp.ngp3) {
         if (onActive) player.eternityBuyer.statBeforeDilation++
@@ -9332,7 +9332,7 @@ function resetUP() {
 function switchDecimalMode() {
 	if (confirm('You will change this option to '+(player.aarexModifications.breakInfinity?'logarithmica_numerus_lite':'break_infinity.min')+'.js. This requires a game reload. Are you sure you want to do that?')) {
 		player.aarexModifications.breakInfinity = !player.aarexModifications.breakInfinity
-		if (player.aarexModifications.breakInfinity && !player.aarexModifications.performanceTicks && confirm("WARNING: This will probably make this game laggy without Performance Ticks! Do you want to turn on Performance Ticks?")) player.aarexModifications.performanceTicks = true
+		if (player.aarexModifications.breakInfinity && !player.aarexModifications.performanceTicks && confirm("警告:这可能会使游戏变得十分卡顿,你确定真的要这样做吗?")) player.aarexModifications.performanceTicks = true
 		save_game(true)
 		document.location.reload(true)
 	}
