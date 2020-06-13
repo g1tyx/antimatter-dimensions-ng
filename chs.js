@@ -25,7 +25,7 @@ var cnItems = {
     'Fourth Infinity Dimension': '无尽维度4',
     'Second Black Hole Dimension': '黑洞维度2',
     'Third Black Hole Dimension': '黑洞维度3',
-    'Eighth Meta Dimension': '元维度8',
+    'Eighth Meta Dimension': '元维度8',    
     'Fifth Meta Dimension': '元维度5',
     'First Meta Dimension': '元维度1',
     'Fourth Meta Dimension': '元维度4',

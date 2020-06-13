@@ -583,7 +583,7 @@ function setupText() {
 		var type=glyph.getAttribute("type")
 		if (type>0&&type<br.names.length) {
 			glyph.className="bRune "+br.names[type]
-			glyph.setAttribute("ach-tooltip",br.names[type]+" Bosonic Rune")
+			glyph.setAttribute("ach-tooltip",br.names[type]+"波色符文")
 		}
 	}
 }
@@ -4139,7 +4139,7 @@ function updateGhostifyTabs() {
 			//document.getElementById("wzbSpeed").textContent="Current W & Z Bosons speed: "+shorten(tmp.wzbs)+"x (w/ Bosonic Speed: "+shorten(lSpeed)+"x)"
 			document.getElementById("ap").textContent=shorten(data2.dP)
 			document.getElementById("apProduction").textContent=(data2.dPUse?"-":"+")+shorten(r)+"/s"
-			document.getElementById("apUse").textContent=data2.dPUse==0?"":"You are currently consuming Anti-Preons to "+(["","decay W Quark","oscillate Z Neutrino","convert W- to W+ Bosons"])[data2.dPUse]+"."
+			document.getElementById("apUse").textContent=data2.dPUse==0?"":"你正在使用反前子能量 "+(["","衰变 W 夸克","震荡 Z 中微子","转化 W- 至 W+ "])[data2.dPUse]+"."
 			document.getElementById("wQkType").textContent=data2.wQkUp?"up":"down"
 			document.getElementById("wQkProgress").textContent=data2.wQkProgress.times(100).toFixed(1)+"% to turn W Quark to a"+(data2.wQkUp?" down":"n up")+" quark."
 			document.getElementById("wQk").className=show0?"zero":data2.wQkUp?"up":"down"
@@ -4149,13 +4149,13 @@ function updateGhostifyTabs() {
 			document.getElementById("wbTime").textContent=shorten(tmp.wbt)
 			document.getElementById("wbOscillate").textContent=shorten(tmp.wbo)
 			document.getElementById("wbProduction").textContent=shorten(tmp.wbp)
-			document.getElementById("zNeGen").textContent=(["electron","Mu","Tau"])[data2.zNeGen-1]
-			document.getElementById("zNeProgress").textContent=data2.zNeProgress.times(100).toFixed(1)+"% to oscillate Z Neutrino to "+(["Mu","Tau","electron"])[data2.zNeGen-1]+"."
-			document.getElementById("zNeReq").textContent="Oscillate progress gain speed is currently "+(gainSpeed.gt(1)?shorten(gainSpeed):"1 / "+shorten(Decimal.div(1,gainSpeed)))+"x."
+			document.getElementById("zNeGen").textContent=(["电子","Mu","Tau"])[data2.zNeGen-1]
+			document.getElementById("zNeProgress").textContent=data2.zNeProgress.times(100).toFixed(1)+"% 完成度震荡至 "+(["Mu","Tau","electron"])[data2.zNeGen-1]+"."
+			document.getElementById("zNeReq").textContent="振荡器的工作效率现在是 "+(gainSpeed.gt(1)?shorten(gainSpeed):"1 / "+shorten(Decimal.div(1,gainSpeed)))+"x."
 			document.getElementById("zNe").className=(["electron","mu","tau"])[data2.zNeGen-1]
 			document.getElementById("zNeSymbol").textContent=(["e","μ","τ"])[data2.zNeGen-1]
 			document.getElementById("zb").textContent=shortenDimensions(data2.zb)
-			document.getElementById("zbGain").textContent="You will gain "+shortenDimensions(data2.zNeReq.pow(0.75))+" Z Bosons on next oscillation."
+			document.getElementById("zbGain").textContent="在下次震荡你将会获得 "+shortenDimensions(data2.zNeReq.pow(0.75))+" Z 波色."
 			document.getElementById("zbSpeed").textContent=shorten(tmp.zbs)
 		}
 	}
