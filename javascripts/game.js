@@ -1827,7 +1827,7 @@ function updateDimensions() {
         var e = Math.floor(Math.log10(Math.round(1/tickmultNum)))
         if (isNaN(tickmultNum)) ticklabel = 'Break the tick interval by Infinite';
         else if (e >= 9) ticklabel = "Divide the tick interval by " + shortenDimensions(Decimal.recip(tickmult))
-        else ticklabel = 'Reduce the tick interval by ' + ((1 - tickmultNum) * 100).toFixed(e) + '%'
+        else ticklabel = '降低时间间隔 ' + ((1 - tickmultNum) * 100).toFixed(e) + '%'
         let ic3mult=getPostC3Mult()
         if (player.galacticSacrifice || player.currentChallenge == "postc3" || isIC3Trapped()) document.getElementById("tickLabel").innerHTML = ((isIC3Trapped() || player.currentChallenge == "postc3") && player.currentChallenge != "postcngmm_3" && !player.challenges.includes("postcngmm_3") && !tmp.be ? "M" : ticklabel + '<br>and m') + 'ultiply all dimensions by ' + (ic3mult>999.95?shorten(ic3mult):new Decimal(ic3mult).toNumber().toPrecision(4)) + '.'
         else document.getElementById("tickLabel").textContent = ticklabel + '.'
@@ -1919,7 +1919,7 @@ function updateDimensions() {
         }
         if (player.eternitiesBank>0) document.getElementById("eternityStatistics").style.display = ""
 
-        if (player.dilation.times) document.getElementById("dilated").textContent = "You have succesfully dilated "+getFullExpansion(player.dilation.times)+" times."
+        if (player.dilation.times) document.getElementById("dilated").textContent = "你已经成功进行了 "+getFullExpansion(player.dilation.times)+" 次膨胀时间."
         else document.getElementById("dilated").textContent = ""
 
         if (player.exdilation == undefined ? false : player.exdilation.times > 1) document.getElementById("exdilated").textContent = "You have reversed dilation "+getFullExpansion(player.exdilation.times)+" times."
@@ -2889,8 +2889,8 @@ function updateInfCosts() {
 
     if (document.getElementById("timestudies").style.display == "block" && document.getElementById("eternitystore").style.display == "block") {
         document.getElementById("11desc").textContent = "Currently: "+shortenMoney(getTS11Mult())+"x"
-        document.getElementById("32desc").textContent = "You gain "+getFullExpansion(getTS32Mult())+"x more infinitied stat (based on dimension boosts)"
-        document.getElementById("51desc").textContent = "You gain "+shortenCosts(player.aarexModifications.newGameExpVersion?1e30:1e15)+"x more IP"
+        document.getElementById("32desc").textContent = "基于维度提升次数获得更多的无限次数 当前:"+getFullExpansion(getTS32Mult())+"x "
+        document.getElementById("51desc").textContent = "你获得 "+shortenCosts(player.aarexModifications.newGameExpVersion?1e30:1e15)+"x 倍IP"
         document.getElementById("71desc").textContent = "Currently: "+shortenMoney(calcTotalSacrificeBoost().pow(0.25).max(1).min("1e210000"))+"x"
         document.getElementById("72desc").textContent = "Currently: "+shortenMoney(calcTotalSacrificeBoost().pow(0.04).max(1).min("1e30000"))+"x"
         document.getElementById("73desc").textContent = "Currently: "+shortenMoney(calcTotalSacrificeBoost().pow(0.005).max(1).min("1e1300"))+"x"
@@ -2903,10 +2903,10 @@ function updateInfCosts() {
         document.getElementById("141desc").textContent = "Currently: "+shortenMoney(new Decimal(1e45).dividedBy(Decimal.pow(15, Math.log(player.thisInfinityTime)*Math.pow(player.thisInfinityTime, 0.125))).max(1))+"x"
         document.getElementById("142desc").textContent = "You gain "+shortenCosts(1e25)+"x more IP"
         document.getElementById("143desc").textContent = "Currently: "+shortenMoney(Decimal.pow(15, Math.log(player.thisInfinityTime)*Math.pow(player.thisInfinityTime, 0.125)))+"x"
-        document.getElementById("151desc").textContent = shortenCosts(1e4)+"x multiplier on all Time dimensions"
+        document.getElementById("151desc").textContent = shortenCosts(1e4)+"x 倍增幅所有时间维度"
         document.getElementById("161desc").textContent = shortenCosts(Decimal.pow(10,(player.galacticSacrifice?6660:616)*(player.aarexModifications.newGameExpVersion?5:1)))+"x multiplier on all normal dimensions"
-        document.getElementById("162desc").textContent = shortenCosts(Decimal.pow(10,(player.galacticSacrifice?234:11)*(player.aarexModifications.newGameExpVersion?5:1)))+"x multiplier on all Infinity dimensions"
-        document.getElementById("192desc").textContent = "You can get beyond "+shortenMoney(Number.MAX_VALUE)+" replicantis, but the interval is increased the more you have"
+        document.getElementById("162desc").textContent = shortenCosts(Decimal.pow(10,(player.galacticSacrifice?234:11)*(player.aarexModifications.newGameExpVersion?5:1)))+"x 倍增幅所有无限维度"
+        document.getElementById("192desc").textContent = "你的复制品数量可以超过 "+shortenMoney(Number.MAX_VALUE)+" 但是你拥有的复制品越多获得复制品的间隔将会越长"
         document.getElementById("193desc").textContent = "Currently: "+shortenMoney(Decimal.pow(1.03, getEternitied()).min("1e13000"))+"x"
         document.getElementById("212desc").textContent = "Currently: "+((Math.pow(player.timeShards.max(2).log2(), 0.005)-1)*100).toFixed(2)+"%"
         document.getElementById("214desc").textContent = "Currently: "+shortenMoney(((calcTotalSacrificeBoost().pow(8)).min("1e46000").times(calcTotalSacrificeBoost().pow(1.1)).div(calcTotalSacrificeBoost())).max(1).min(new Decimal("1e125000")))+"x"
@@ -4043,7 +4043,11 @@ function setAchieveTooltip() {
     arent.setAttribute('ach-tooltip', "在撕裂宇宙中,开启膨胀时间,不进行任何时间研究,不购买EP倍增器,树升级和打破永恒的前提下到达 "+shortenCosts(Decimal.pow(10, 18e5))+" IP.")
     ee.setAttribute('ach-tooltip', "拥有 "+shorten(Number.MAX_VALUE)+" 永恒次数.")
     oc.setAttribute('ach-tooltip', "在撕裂宇宙中,且开启了反膨胀时间拥有至少 "+shortenCosts(Decimal.pow(10, 375e3))+" EP 时进行幽灵化.")
+<<<<<<< HEAD
+    btco.setAttribute('ach-tooltip', "当你在量子挑战6和8中,到达 "+shortenCosts(Decimal.pow(10, 165e7))+" 反物质后获得混合挑战1的奖励.")
+=======
     btco.setAttribute('ach-tooltip', "Get a Paired Challenge 1 reward after you get "+shortenCosts(Decimal.pow(10, 165e7))+" antimatter in Quantum Challenges 6 and 8.")
+>>>>>>> 0315ac85680e3215dd31c6360214a6ea9f508759
     tdc.setAttribute('ach-tooltip', "在混合挑战6+8中,开启反膨胀时间完成永恒挑战11且拥有超过 "+shortenCosts(Decimal.pow(10, 15500))+" IP .")
     igu.setAttribute('ach-tooltip', "在撕裂宇宙中开启反膨胀时间,不(购买任何时间研究,EP获取倍增器,树升级,打破永恒)的情况下到达 "+shortenCosts(Decimal.pow(10, 225e3))+" IP.")
 }
@@ -8665,21 +8669,21 @@ function simulateTime(seconds, real, id) {
         autoBuyerTick();
     }
     closeToolTip()
-    var popupString = "While you were away"
-    if (player.money.gt(playerStart.money)) popupString+= ",<br> your antimatter increased "+shortenMoney(player.money.log10() - (playerStart.money).log10())+" orders of magnitude"
-    if (player.infinityPower.gt(playerStart.infinityPower) && !quantumed) popupString+= ",<br> infinity power increased "+shortenMoney(player.infinityPower.log10() - (Decimal.max(playerStart.infinityPower, 1)).log10())+" orders of magnitude"
-    if (player.timeShards.gt(playerStart.timeShards) && !quantumed) popupString+= ",<br> time shards increased "+shortenMoney(player.timeShards.log10() - (Decimal.max(playerStart.timeShards, 1)).log10())+" orders of magnitude"
-    if (storage.dt) if (player.dilation.dilatedTime.gt(storage.dt)) popupString+= ",<br> dilated time increased "+shortenMoney(player.dilation.dilatedTime.log10() - (Decimal.max(storage.dt, 1)).log10())+" orders of magnitude"
-    if (storage.bp) if (player.blackhole.power.gt(storage.bp)) popupString+= ",<br> black hole power increased "+shortenMoney(player.blackhole.power.log10() - (Decimal.max(storage.bp, 1)).log10())+" orders of magnitude"
-    if (storage.ma) if (player.meta.antimatter.gt(storage.ma)) popupString+= ",<br> meta-antimatter increased "+shortenMoney(player.meta.antimatter.log10() - (Decimal.max(storage.ma, 1)).log10())+" orders of magnitude"
+    var popupString = "当你离开游戏时"
+    if (player.money.gt(playerStart.money)) popupString+= ",<br> 你的反物质增加了 "+shortenMoney(player.money.log10() - (playerStart.money).log10())+" 个数量级"
+    if (player.infinityPower.gt(playerStart.infinityPower) && !quantumed) popupString+= ",<br> 无限力量增加了 "+shortenMoney(player.infinityPower.log10() - (Decimal.max(playerStart.infinityPower, 1)).log10())+" 个数量级"
+    if (player.timeShards.gt(playerStart.timeShards) && !quantumed) popupString+= ",<br> 时间碎片增加了 "+shortenMoney(player.timeShards.log10() - (Decimal.max(playerStart.timeShards, 1)).log10())+" 个数量级"
+    if (storage.dt) if (player.dilation.dilatedTime.gt(storage.dt)) popupString+= ",<br> 膨胀时间增加了 "+shortenMoney(player.dilation.dilatedTime.log10() - (Decimal.max(storage.dt, 1)).log10())+" 个数量级"
+    if (storage.bp) if (player.blackhole.power.gt(storage.bp)) popupString+= ",<br> 黑洞力量增加了 "+shortenMoney(player.blackhole.power.log10() - (Decimal.max(storage.bp, 1)).log10())+" 个数量级"
+    if (storage.ma) if (player.meta.antimatter.gt(storage.ma)) popupString+= ",<br> 元反物质增加了 "+shortenMoney(player.meta.antimatter.log10() - (Decimal.max(storage.ma, 1)).log10())+" 个数量级"
     if (storage.dt) {
-        if (tmp.qu.electrons.amount>storage.ec) popupString+= ",<br> electrons increased by "+getFullExpansion(Math.round(tmp.qu.electrons.amount-storage.ec))
-        if (tmp.qu.replicants.amount.gt(storage.nr)) popupString+= ",<br> normal replicants increased "+shortenMoney(tmp.qu.replicants.amount.log10() - (Decimal.max(storage.nr, 1)).log10())+" orders of magnitude"
+        if (tmp.qu.electrons.amount>storage.ec) popupString+= ",<br> 电子增加了 "+getFullExpansion(Math.round(tmp.qu.electrons.amount-storage.ec))
+        if (tmp.qu.replicants.amount.gt(storage.nr)) popupString+= ",<br> 普通复制品增加了 "+shortenMoney(tmp.qu.replicants.amount.log10() - (Decimal.max(storage.nr, 1)).log10())+" 个数量级"
     }
     if (player.infinitied > playerStart.infinitied || player.eternities > playerStart.eternities) popupString+= ","
     else popupString+= "."
-    if (player.infinitied > playerStart.infinitied) popupString+= "<br>you infinitied "+getFullExpansion(player.infinitied-playerStart.infinitied)+" times."
-    if (player.eternities > playerStart.eternities) popupString+= " <br>you eternitied "+getFullExpansion(player.eternities-playerStart.eternities)+" times."
+    if (player.infinitied > playerStart.infinitied) popupString+= "<br>你无限了 "+getFullExpansion(player.infinitied-playerStart.infinitied)+" 次."
+    if (player.eternities > playerStart.eternities) popupString+= " <br>你永恒了 "+getFullExpansion(player.eternities-playerStart.eternities)+" 次."
     if (popupString.length == 20) {
         popupString = popupString.slice(0, -1);
         popupString+= "... Nothing happened."

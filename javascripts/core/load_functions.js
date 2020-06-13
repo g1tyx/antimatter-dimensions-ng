@@ -2053,27 +2053,27 @@ if (player.version < 5) {
   } else player.lastUpdate = new Date().getTime()
   if (player.totalTimePlayed < 1 || inflationCheck || forceToQuantumAndRemove) {
       ngModeMessages=[]
-      if (player.aarexModifications.newGameMult) ngModeMessages.push("Welcome to NG Multiplied mode, made by Despacit and Soul147! This mode adds too many overpowerful buffs! This mode may be broken.")
-      if (player.aarexModifications.newGameExpVersion) ngModeMessages.push("Welcome to NG^ mode, made by Naruyoko! This mode adds way many buffs that this mode may be broken!")
+      if (player.aarexModifications.newGameMult) ngModeMessages.push("欢迎来到NG倍增Mod,该Mod的作者是Despacit 和 Soul147,这个Mod增加了相当多的buff会让游戏变得十分简单,但是同时也有可能会坏档或使游戏崩溃.")
+      if (player.aarexModifications.newGameExpVersion) ngModeMessages.push("欢迎来到NG^Mod,Mod的作者是Naruyoko 这个Mod增加了相当多的buff会让游戏变得十分简单,但是同时也有可能会坏档或使游戏崩溃!")
       if (player.meta!==undefined||player.exdilation!==undefined) {
-          if (!player.aarexModifications.newGamePlusVersion) ngModeMessages.push("WARNING! You are disabling NG+ features on NG++! Standard NG++ have all of NG++ features and I recommend you to create a new save with NG+ and NG++ modes on.")
-          if (player.aarexModifications.ngp4V) ngModeMessages.push("Welcome to NG++++ mode by Aarex! This is a NG+ version of NG+3 which makes you start with more stuff! It is recommended to not use this mode to progress in NG+3.")
+          if (!player.aarexModifications.newGamePlusVersion) ngModeMessages.push("警告!!! 你正在使用NG++并关闭了NG+ Mod 建议你重新开一个存档同时拥有NG+特性.")
+          if (player.aarexModifications.ngp4V) ngModeMessages.push("欢迎来到 NG+4 Mod,该Mod的作者是Aarex 这个Mod包含了NG+和NG+3的所有内容,但是开始游戏时拥有很多强力的加成,我不建议你用此Mod体验Ng+3的游戏内容.")
           if (player.exdilation!==undefined) {
-              if (player.aarexModifications.nguspV) ngModeMessages.push("Welcome to NG Update Semiprime mode made by Aarex! This is like NGUd', but it is really a combination of NG+3 and NGUd. This mode is more balanced too. Good luck! :)")
+              if (player.aarexModifications.nguspV) ngModeMessages.push("欢迎来到NGUD半素数Mod,作者是 Aarex 这个mod和 NGUd'很像, 但他融合了NG+3和NGUD的内容,并且相比NGUD'更平衡,祝你好运 :)")
               if (player.aarexModifications.ngumuV||player.aarexModifications.nguepV) {
-                  if (player.aarexModifications.ngumuV) ngModeMessages.push("Welcome to NG Update Multiplied Prime mode, made by Aarex! This is a NG*-like mod of NGUd'. This mod is very easy to beat, but you can't break this mod. :'(")
-                  if (player.aarexModifications.nguepV) ngModeMessages.push("Welcome to NG Update Exponential Prime mode made by pg132! NGUd^' is like NGUd', but non-Black Hole nerfs are removed to make NGUd^' a NG^-like mod of NGUd'. This mod is very easy to beat, but you can't break this mod. :'(")
+                  if (player.aarexModifications.ngumuV) ngModeMessages.push("欢迎来到NGUD乘法素数Mod,作者是Aarex This is a NG*-like mod of NGUd'. 这个mod非常容易通关,但是你无法打碎他. :'(")
+                  if (player.aarexModifications.nguepV) ngModeMessages.push("欢迎来到NGUD指数素数Mod,作者是pg132. NGUd^' is like NGUd', but non-Black Hole nerfs are removed to make NGUd^' a NG^-like mod of NGUd'. 这个mod非常容易通关,但是你无法打碎他. :'(")
               } else if (player.aarexModifications.nguspV) {}
-              else if (player.aarexModifications.ngudpV) ngModeMessages.push("Welcome to NG Update Prime mode made by pg132! NGUd' is like NGUd+, but you can't reverse dilation. Good luck for beating this mod. >:)")
-              else if (player.meta!==undefined) ngModeMessages.push("Welcome to NG Update+ mode, a combination made by Soul147 (Sigma)! This is a combination of dan-simon's NG Update and Aarex's NG+++. I think in this mode, you can break the game...")
-              else ngModeMessages.push("Welcome to NG Update mode, an another dan-simon's end-game mod! In this mode, there are black hole and ex-dilation.")
-          } else if (player.masterystudies&&!player.aarexModifications.ngp4V) ngModeMessages.push("Welcome to NG+++ mode, the extension of dan-simon's NG++ made by Aarex! There are a lot of content that are added. Good luck for beating this mode!")
-          else if (!player.aarexModifications.ngp4V) ngModeMessages.push("Welcome to NG++ mode, made by dan-simon! In this mode, more dilation upgrades and meta-dimensions are added to push the end-game further.")
-      } else if (player.aarexModifications.newGamePlusVersion) ngModeMessages.push("Welcome to NG+ mode, made by earthernsence! Right now, you start with all Eternity Challenges completed and 1 infinitied.")
-      if (player.infinityUpgradesRespecced) ngModeMessages.push('Welcome to Infinity Respecced, created by Aarex! In this mode, all of infinity upgrades are replaced with new upgrades except 2x IP mult. Oh, break infinity is removed.')
-      if (player.boughtDims) ngModeMessages.push('Welcome to Eternity Respecced created by dan-simon! NOTE: This is broken right now. I will fix it in later time, like after months.')
+              else if (player.aarexModifications.ngudpV) ngModeMessages.push("欢迎来到NGUD' Mod,作者是pg132! NGUd' is like NGUd+, but you can't reverse dilation. Good luck for beating this mod. >:)")
+              else if (player.meta!==undefined) ngModeMessages.push("欢迎来到NGUD+ Mod, 作者是 Soul147 (Sigma) 该mod混合了 dan-simon's NG Update and Aarex's NG+++. 我相信在这个mod下你会很容易就玩坏游戏...")
+              else ngModeMessages.push("Welcome to NG Update mode, an another dan-simon's end-game mod! 这个Mod中有黑洞维度和ex-膨胀时间.")
+          } else if (player.masterystudies&&!player.aarexModifications.ngp4V) ngModeMessages.push("欢迎来到NG+3Mod,作者是Aarex,基于dan-simon的NG+2做了更多扩展!这里有许多新的内容,也是目前最受欢迎的Mod.祝你好运通关此Mod!")
+          else if (!player.aarexModifications.ngp4V) ngModeMessages.push("欢迎来到NG+2 Mod,作者是dan-simon. 在此Mod中,增加了更多膨胀时间升级和元维度使你的游戏可以走的更远.")
+      } else if (player.aarexModifications.newGamePlusVersion) ngModeMessages.push("欢迎来到NG+Mod作者是 earthernsence.你开始游戏时将会自动完成全部永恒挑战和1次无限.")
+      if (player.infinityUpgradesRespecced) ngModeMessages.push('欢迎来到Infinity Respecced, 作者是 Aarex! 在此Mod中,所有无限升级都被修改了,除了2x倍增器打破无限也被移除了,请自行体验.')
+      if (player.boughtDims) ngModeMessages.push('欢迎来到 Eternity Respecced 作者是 dan-simon! 注意:这个mod现在好像坏了,我将会在接下来的时间修复,大概几个月(译者:从看到这句话已经几年了).')
       if (player.galacticSacrifice) {
-          if (player.aarexModifications.ngmX>4) ngModeMessages.push('Welcome to NG-5 mode, a more hardcore mode than NG-4! This is very hardcore because you are stuck in more challenges. You are also stuck in Automated Big Crunches Challenge which is a big impact on this mod. Good luck! This mode is made by Aarex.')
+          if (player.aarexModifications.ngmX>4) ngModeMessages.push('欢迎来到NG-5 Mod,一个比NG-4更难的Mod! 该Mod十分硬核,新增了更多的挑战许多你都会卡很久, 大坍塌自动化在此Mod中会相当困难. 祝你好运! 作者是 Aarex.')
           else if (player.aarexModifications.ngmX>3) ngModeMessages.push('Welcome to NG-4 mode, the nerfed version of NG--- mode! This mode features even more changes from NG--- and is very hardcore. WIP by Nyan Cat and edited by Aarex.')
           else if (player.aarexModifications.newGame3MinusVersion) ngModeMessages.push('Welcome to NG--- mode, the nerfed version of NG-- mode! This mode reduces tickspeed multiplier multiplier and nerfs galaxies, but have a new feature called \"Tickspeed Boosts\" and 1 achievement buff.')
           else ngModeMessages.push('Welcome to NG-- mode created by Nyan cat! Dilation is always locked but have more balancing, IC3 trap, and a new feature called "Galactic Sacrifice".')
