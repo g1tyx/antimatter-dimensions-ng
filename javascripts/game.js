@@ -1827,7 +1827,7 @@ function updateDimensions() {
         var e = Math.floor(Math.log10(Math.round(1/tickmultNum)))
         if (isNaN(tickmultNum)) ticklabel = 'Break the tick interval by Infinite';
         else if (e >= 9) ticklabel = "Divide the tick interval by " + shortenDimensions(Decimal.recip(tickmult))
-        else ticklabel = 'Reduce the tick interval by ' + ((1 - tickmultNum) * 100).toFixed(e) + '%'
+        else ticklabel = '降低时间间隔 ' + ((1 - tickmultNum) * 100).toFixed(e) + '%'
         let ic3mult=getPostC3Mult()
         if (player.galacticSacrifice || player.currentChallenge == "postc3" || isIC3Trapped()) document.getElementById("tickLabel").innerHTML = ((isIC3Trapped() || player.currentChallenge == "postc3") && player.currentChallenge != "postcngmm_3" && !player.challenges.includes("postcngmm_3") && !tmp.be ? "M" : ticklabel + '<br>and m') + 'ultiply all dimensions by ' + (ic3mult>999.95?shorten(ic3mult):new Decimal(ic3mult).toNumber().toPrecision(4)) + '.'
         else document.getElementById("tickLabel").textContent = ticklabel + '.'
@@ -1919,7 +1919,7 @@ function updateDimensions() {
         }
         if (player.eternitiesBank>0) document.getElementById("eternityStatistics").style.display = ""
 
-        if (player.dilation.times) document.getElementById("dilated").textContent = "You have succesfully dilated "+getFullExpansion(player.dilation.times)+" times."
+        if (player.dilation.times) document.getElementById("dilated").textContent = "你已经成功进行了 "+getFullExpansion(player.dilation.times)+" 次膨胀时间."
         else document.getElementById("dilated").textContent = ""
 
         if (player.exdilation == undefined ? false : player.exdilation.times > 1) document.getElementById("exdilated").textContent = "You have reversed dilation "+getFullExpansion(player.exdilation.times)+" times."
@@ -2343,8 +2343,8 @@ function updateDimensions() {
                 eu2formula="x^log10(x)^3.75"
                 if (tmp.eu2b!=1) eu2formula="10^("+tmp.eu2b.toFixed(2)+"*log10(x))^4.75"
             }
-            document.getElementById("eter1").innerHTML = "Infinity Dimensions multiplier based on unspent EP (x+1)<br>Currently: "+shortenMoney(player.eternityPoints.plus(1))+"x<br>Cost: 5 EP"
-            document.getElementById("eter2").innerHTML = "Infinity Dimension multiplier based on eternities ("+eu2formula+")<br>Currently: "+shortenMoney(getEU2Mult())+"x<br>Cost: 10 EP"
+            document.getElementById("eter1").innerHTML = "基于未使用的永恒点数增幅无限维度 (EP+1)<br>Currently: "+shortenMoney(player.eternityPoints.plus(1))+"x<br>Cost: 5 EP"
+            document.getElementById("eter2").innerHTML = "基于永恒次数增幅无限维度 ("+eu2formula+")<br>Currently: "+shortenMoney(getEU2Mult())+"x<br>Cost: 10 EP"
             document.getElementById("eter3").innerHTML = "Infinity Dimensions multiplier based on "+(player.boughtDims?"time shards (x/"+shortenCosts(1e12)+"+1)":"sum of Infinity Challenge times")+"<br>Currently: "+shortenMoney(getEU3Mult())+"x<br>Cost: "+shortenCosts(50e3)+" EP"
             document.getElementById("eter4").innerHTML = "Your achievement bonus affects Time Dimensions"+"<br>Cost: "+shortenCosts(1e16)+" EP"
             document.getElementById("eter5").innerHTML = "Time Dimensions are multiplied by your unspent time theorems"+"<br>Cost: "+shortenCosts(1e40)+" EP"
@@ -2889,8 +2889,8 @@ function updateInfCosts() {
 
     if (document.getElementById("timestudies").style.display == "block" && document.getElementById("eternitystore").style.display == "block") {
         document.getElementById("11desc").textContent = "Currently: "+shortenMoney(getTS11Mult())+"x"
-        document.getElementById("32desc").textContent = "You gain "+getFullExpansion(getTS32Mult())+"x more infinitied stat (based on dimension boosts)"
-        document.getElementById("51desc").textContent = "You gain "+shortenCosts(player.aarexModifications.newGameExpVersion?1e30:1e15)+"x more IP"
+        document.getElementById("32desc").textContent = "基于维度提升次数获得更多的无限次数 当前:"+getFullExpansion(getTS32Mult())+"x "
+        document.getElementById("51desc").textContent = "你获得 "+shortenCosts(player.aarexModifications.newGameExpVersion?1e30:1e15)+"x 倍IP"
         document.getElementById("71desc").textContent = "Currently: "+shortenMoney(calcTotalSacrificeBoost().pow(0.25).max(1).min("1e210000"))+"x"
         document.getElementById("72desc").textContent = "Currently: "+shortenMoney(calcTotalSacrificeBoost().pow(0.04).max(1).min("1e30000"))+"x"
         document.getElementById("73desc").textContent = "Currently: "+shortenMoney(calcTotalSacrificeBoost().pow(0.005).max(1).min("1e1300"))+"x"
@@ -2903,10 +2903,10 @@ function updateInfCosts() {
         document.getElementById("141desc").textContent = "Currently: "+shortenMoney(new Decimal(1e45).dividedBy(Decimal.pow(15, Math.log(player.thisInfinityTime)*Math.pow(player.thisInfinityTime, 0.125))).max(1))+"x"
         document.getElementById("142desc").textContent = "You gain "+shortenCosts(1e25)+"x more IP"
         document.getElementById("143desc").textContent = "Currently: "+shortenMoney(Decimal.pow(15, Math.log(player.thisInfinityTime)*Math.pow(player.thisInfinityTime, 0.125)))+"x"
-        document.getElementById("151desc").textContent = shortenCosts(1e4)+"x multiplier on all Time dimensions"
+        document.getElementById("151desc").textContent = shortenCosts(1e4)+"x 倍增幅所有时间维度"
         document.getElementById("161desc").textContent = shortenCosts(Decimal.pow(10,(player.galacticSacrifice?6660:616)*(player.aarexModifications.newGameExpVersion?5:1)))+"x multiplier on all normal dimensions"
-        document.getElementById("162desc").textContent = shortenCosts(Decimal.pow(10,(player.galacticSacrifice?234:11)*(player.aarexModifications.newGameExpVersion?5:1)))+"x multiplier on all Infinity dimensions"
-        document.getElementById("192desc").textContent = "You can get beyond "+shortenMoney(Number.MAX_VALUE)+" replicantis, but the interval is increased the more you have"
+        document.getElementById("162desc").textContent = shortenCosts(Decimal.pow(10,(player.galacticSacrifice?234:11)*(player.aarexModifications.newGameExpVersion?5:1)))+"x 倍增幅所有无限维度"
+        document.getElementById("192desc").textContent = "你的复制品数量可以超过 "+shortenMoney(Number.MAX_VALUE)+" 但是你拥有的复制品越多获得复制品的间隔将会越长"
         document.getElementById("193desc").textContent = "Currently: "+shortenMoney(Decimal.pow(1.03, getEternitied()).min("1e13000"))+"x"
         document.getElementById("212desc").textContent = "Currently: "+((Math.pow(player.timeShards.max(2).log2(), 0.005)-1)*100).toFixed(2)+"%"
         document.getElementById("214desc").textContent = "Currently: "+shortenMoney(((calcTotalSacrificeBoost().pow(8)).min("1e46000").times(calcTotalSacrificeBoost().pow(1.1)).div(calcTotalSacrificeBoost())).max(1).min(new Decimal("1e125000")))+"x"
@@ -3194,12 +3194,12 @@ function toggleCrunchMode(freeze) {
 
 function toggleEternityConf() {
     player.options.eternityconfirm = !player.options.eternityconfirm
-    document.getElementById("eternityconf").textContent = "Eternity confirmation: O" + (player.options.eternityconfirm ? "N" : "FF")
+    document.getElementById("eternityconf").textContent = "永恒确认: O" + (player.options.eternityconfirm ? "N" : "FF")
 }
 
 function toggleDilaConf() {
     player.aarexModifications.dilationConf = !player.aarexModifications.dilationConf
-    document.getElementById("dilationConfirmBtn").textContent = "Dilation confirmation: O" + (player.aarexModifications.dilationConf ? "N" : "FF")
+    document.getElementById("dilationConfirmBtn").textContent = "膨胀时间确认: O" + (player.aarexModifications.dilationConf ? "N" : "FF")
 }
 
 
@@ -3729,7 +3729,7 @@ function import_save(type) {
 }
 
 function reset_game() {
-	if (!forceHardReset) if (!confirm("Do you really want to erase all your progress?")) return
+	if (!forceHardReset) if (!confirm("你确定要硬重置全部游戏进度?")) return
 	clearInterval(gameLoopIntervalId)
 	infiniteDetected = false
 	updateNewPlayer(true)
@@ -3937,115 +3937,115 @@ function setAchieveTooltip() {
     let tdc = document.getElementById("The Deep Challenge")
     let igu = document.getElementById("I give up.")
 
-    alot.setAttribute('ach-tooltip', "Buy a single Second Dimension."+(player.aarexModifications.ngmX>3?" Reward: You gain Time Shards 100x faster.":""))
-    ndial.setAttribute('ach-tooltip', "Have exactly 99 Eighth Dimensions. Reward: Eighth Dimensions are 10% stronger"+(player.tickspeedBoosts==undefined?".":" and you gain more GP based on your Eighth Dimensions and your Tickspeed Boosts."));
-    apocAchieve.setAttribute('ach-tooltip', "Get over " + formatValue(player.options.notation, 1e80, 0, 0) + " antimatter.");
-    gal.setAttribute('ach-tooltip', 'Buy an Antimatter Galaxy. '+(player.aarexModifications.ngmX>3?"Reward: Upon a Time Dimension Boost, your Dimension Boosts don’t reset unless you have more Time Dimension Boosts than your Dimension Boosts.":''));
-    doubleGal.setAttribute('ach-tooltip', 'Buy 2 Antimatter Galaxies. '+(player.tickspeedBoosts!==undefined?"Reward: Upon a Tickspeed Boost, your Dimension Boosts"+(player.aarexModifications.ngmX>3?" and Time Dimension Boosts":"")+" don’t reset unless you have more Tickspeed Boosts than five times your Antimatter Galaxies minus eight.":'')+(player.aarexModifications.ngmX>3?" You start with 3 Time Dimension Boosts.":""));
-    claustrophobic.setAttribute('ach-tooltip', "Go Infinite with just 1 Antimatter Galaxy. Reward: Reduces starting tick interval by 2%"+(player.galacticSacrifice&&player.tickspeedBoosts==undefined?" and keep galaxy upgrades on infinity.":"."));
-    noPointAchieve.setAttribute('ach-tooltip', "Buy a single First Dimension when you have over " + formatValue(player.options.notation, 1e150, 0, 0) + " of them. Reward: First Dimensions are 10% stronger"+(player.tickspeedBoosts==undefined?".":" and you can max buy Dimension and Tickspeed Boosts."));
-    forgotAchieve.setAttribute('ach-tooltip', "Get any Dimension multiplier over " + formatValue(player.options.notation, 1e31, 0, 0)) + ". Reward: First Dimensions are 5% stronger.";
-    sanic.setAttribute('ach-tooltip', "Have antimatter/sec exceed your current antimatter above " + formatValue(player.options.notation, 1e63, 0, 0));
-    infinity.setAttribute('ach-tooltip', "Reach Infinite antimatter. Reward: Start with 100 antimatter"+(player.galacticSacrifice?" and always have at least 10x lower dimension costs.":"."));
-    nerf.setAttribute('ach-tooltip',"Get any dimension multiplier over "+shortenCosts(1e31)+". Reward: First Dimensions are 5% stronger.")
-    didnt.setAttribute('ach-tooltip',"Reach Infinite antimatter without having any 8th Dimensions. Reward: Dimensions 1-7 are 2"+(player.galacticSacrifice?"x":"%")+" stronger.")
-    fast.setAttribute('ach-tooltip', "Go infinite in under 2 hours. Reward: Start with "+shortenCosts(1e3)+" antimatter"+(player.galacticSacrifice?" and get a multiplier to galaxy points based on fastest infinity (5 hours / x, 10x softcap).":"."));
-    lot.setAttribute('ach-tooltip', "Reach Infinity 10 times."+(player.galacticSacrifice?" Reward: "+(player.tickspeedBoosts==undefined?"Start infinity with galaxy points based on your infinities (x^2/100).":" Keep galaxy upgrades on infinity."):""));
-    cancer.setAttribute('ach-tooltip', "Buy ten Galaxies in total while using cancer notation."+(player.galacticSacrifice&&player.tickspeedBoosts==undefined?" Reward: Multiplier of IP based on number of galaxies bought in cancer notation.":""))
-    zero.setAttribute('ach-tooltip',"Get to Infinity without Dimension shifts, boosts or galaxies in a challenge. Reward: Dimensions 1-4 are 25% stronger"+(player.galacticSacrifice&&player.tickspeedBoosts==undefined?" and 1.25x to IP.":"."))
-    potato.setAttribute('ach-tooltip', "Get more than " + formatValue(player.options.notation, 1e29, 0, 0) + " ticks per second. Reward: Reduces starting tick interval by 2%.");
-    potato2.setAttribute('ach-tooltip', "Get more than " + formatValue(player.options.notation, 1e58, 0, 0) + " ticks per second. Reward: Reduces starting tick interval by 2%.");
-    potato3.setAttribute('ach-tooltip', "Get more than "+shortenCosts(new Decimal("1e8296262"))+" ticks per second." + (player.galacticSacrifice !== undefined ? " Reward: Galaxy boost to Galaxy points gain is buffed." : ""))
-    dimensional.setAttribute('ach-tooltip', "Reach " + formatValue(player.options.notation, 1e12, 0, 0) + " of all dimensions except 8th.");
-    anti.setAttribute('ach-tooltip', "Complete all the challenges. Reward: All dimension are 10% stronger"+(player.galacticSacrifice&&player.tickspeedBoosts==undefined?" and tickspeed cost is also reduced based on dimension cost reduction.":"."))
-    forever.setAttribute('ach-tooltip', "Infinity in 1 minute or less. Reward: Start with "+shortenCosts(1e10)+" antimatter"+(player.galacticSacrifice&&player.tickspeedBoosts==undefined?" and multiplier to IP based on your best infinity time.":"."))
-    many.setAttribute('ach-tooltip', "Complete the Second Dimension Autobuyer challenge in 3 minutes or less. Reward: All dimensions are stronger in first 3 minutes of infinity"+(player.tickspeedBoosts==undefined?".":" and you will gain 1% of GP you will gain per second."));
-    is.setAttribute('ach-tooltip', "Complete the Tickspeed Autobuyer challenge in 3 minutes or less.  Reward: Boost per 10 dimensions "+(player.tickspeedBoosts!=undefined?"is boosted based on your best time of Tickspeed Autobuyer challenge.":player.galacticSacrifice?"is x^(1.0666).":"+1%"))
-    limitBreak.setAttribute('ach-tooltip', "Break Infinity."+(player.galacticSacrifice&&player.tickspeedBoosts==undefined?" Reward: Multiplier to IP gain based on galaxies.":""))
-    oh.setAttribute('ach-tooltip', "Reach "+shortenCosts(1e8)+" IP per minute."+(player.galacticSacrifice&&player.tickspeedBoosts==undefined?" Reward: Multiplier to GP based on log(IP).":""))
-    mil.setAttribute('ach-tooltip',"Reach "+shortenCosts(1e6)+" infinity power."+(player.galacticSacrifice?" Reward: First Dimensions are "+shortenCosts(1e6)+" times stronger.":""))
-    right.setAttribute('ach-tooltip',"Complete the Third Dimension Autobuyer challenge in 10 seconds or less. Reward: First dimensions are 5"+(player.galacticSacrifice?"x":"0%")+" stronger.")
-    not.setAttribute('ach-tooltip',"Get to infinity with only a single first Dimension without Dimension Boosts, Shifts or Galaxies while in Automatic Galaxies Challenge. Reward: First Dimensions are "+(player.galacticSacrifice?909:3)+" times stronger.")
-    IPBelongs.setAttribute('ach-tooltip', "Big Crunch for "+shortenCosts(1e150)+" IP. Reward: Additional 4x multiplier to IP.")
-    reference.setAttribute('ach-tooltip', "Get a x"+shortenDimensions(Number.MAX_VALUE)+" multiplier in a single sacrifice. Reward: Sacrifices are stronger.")
-    infchall.setAttribute('ach-tooltip', "Complete an infinity challenge."+(player.galacticSacrifice?" Reward: Increase galaxy and "+(player.tickspeedBoosts===undefined?"g11":"Tickspeed Boost")+" effectiveness based on IC's completed.":""))
-    blink.setAttribute('ach-tooltip', "Get to Infinity in under 200 milliseconds. Reward: Start with " + formatValue(player.options.notation, 1e25, 0, 0) + " antimatter and all dimensions are stronger in first 300ms of Infinity.");
-    spare.setAttribute('ach-tooltip', "Reach " +formatValue(player.options.notation, new Decimal("1e35000"), 0, 0)+" antimatter. Reward: Dimensions are more powerful the more unspent antimatter you have.");
-    cant.setAttribute('ach-tooltip', "Get all Dimension multipliers over "+shortenCosts(1e308)+". Reward: All dimensions 10"+(player.galacticSacrifice?"x":"%")+" stronger.")
-    newDim.setAttribute('ach-tooltip', "Unlock the 4th Infinity Dimension."+(player.boughtDims?"":" Reward: Your achievement bonus affects Infinity Dimensions."))
-    tables.setAttribute('ach-tooltip', "Get 8th Dimension multiplier to be highest, 7th Dimension multiplier second highest etc. Reward: Each dimension gains a boost proportional to tier (8th dimension gets 8"+(player.galacticSacrifice?"0":"")+"%, 7th gets 7"+(player.galacticSacrifice?"0":"")+"%, etc.)")
-    speed.setAttribute('ach-tooltip', "Big Crunch for "+shortenCosts(1e200)+" IP in 2 seconds or less. Reward: All dimensions are significantly stronger in first 5 seconds of infinity.")
-    speed2.setAttribute('ach-tooltip', "Big Crunch for "+shortenCosts(1e250)+" IP in 20 seconds or less. Reward: All dimensions are significantly stronger in first 60 seconds of infinity.")
-    overdrive.setAttribute('ach-tooltip', "Big Crunch with " + shortenCosts(1e300) + " IP/min. Reward: Additional 4x multiplier to IP.")
-    minute.setAttribute('ach-tooltip', "Reach " + shortenCosts(1e260) + " infinity power. Reward: Double infinity power gain.")
-    hell.setAttribute('ach-tooltip', "Get the sum of Infinity Challenge times under 5 seconds." + (player.boughtDims ? " Reward: Sacrifice is again slightly stronger." : ""))
-    zerodeg.setAttribute('ach-tooltip', "Unlock the 8th Infinity Dimension."+(player.boughtDims?" Reward: Normal dimensions are multiplied by number of 8th Infinity Dimensions you have.":""))
-    costco.setAttribute('ach-tooltip', "Bulk buy 750 dimension boosts at once. Reward: Dimension boosts are "+(player.boughtDims?"cheaper based on EP.":"1% more powerful (to normal dims)."))
-    mile.setAttribute('ach-tooltip', "Get "+(tmp.ngp3?"100 eternities milestone.":"all eternity milestones."))
-    swarm.setAttribute('ach-tooltip', "Get 10 replicanti galaxies in 15 seconds." + (player.boughtDims ? " Reward: Unlock replicanti galaxy power control." : ""))
-    inftime.setAttribute('ach-tooltip', player.boughtDims ? "Eternity without buying dimensions 1-7. Reward: Time dimensions are multiplied by eighth root of eighth dimensions." : "Get 308 tickspeed upgrades (in one eternity) from time dimensions. Reward: Time dimensions are affected slightly more by tickspeed.")
-    guide.setAttribute('ach-tooltip', player.boughtDims ? "Reach " + shortenCosts(new Decimal("1e1000000")) + " replicanti. Reward: Replicanti increase faster the more you have." : "Eternity with the infinitied stat under 10.")
-    nine.setAttribute('ach-tooltip', "Eternity with exactly 9 replicanti." + (player.boughtDims ? " Reward: Replicanti multiplier to ID is 9% stronger (after time studies)." : ""))
-    infiniteIP.setAttribute('ach-tooltip', "Reach "+shortenCosts(new Decimal("1e30008"))+" IP." + (player.galacticSacrifice == undefined || player.tickspeedBoosts != undefined ? "" : " Reward: Your total galaxies boost Galaxy points gain more."))
-    fiveMore.setAttribute('ach-tooltip', "Complete 50 unique eternity challenge tiers." + (player.galacticSacrifice !== undefined ? " Reward: Divide Infinity Dimension costs based on your g11 multiplier." : ""))
-    newI.setAttribute('ach-tooltip', "Eternity in under 200ms." + (player.galacticSacrifice !== undefined ? " Reward: Dimension Boosts boost to Galaxy points gain is buffed." : ""))
-    over9000.setAttribute('ach-tooltip', "Get a total sacrifice multiplier of "+shortenCosts(new Decimal("1e9000"))+". Reward: Sacrifice doesn't reset your dimensions.")
-    dawg.setAttribute('ach-tooltip', "Have all your past 10 infinities be at least "+shortenMoney(Number.MAX_VALUE)+" times higher IP than the previous one. Reward: Your antimatter doesn't reset on dimboost/galaxy.")
-    eatass.setAttribute('ach-tooltip', "Reach "+shortenCosts(1e100)+" IP without any infinities or first dimensions. Reward: IP multiplier based on time spent this infinity.")
-    layer.setAttribute('ach-tooltip', "Reach "+shortenMoney(Number.MAX_VALUE)+" EP." + (player.galacticSacrifice !== undefined ? " Reward: Galaxy boost to Galaxy points gain is buffed." : ""))
-    fkoff.setAttribute('ach-tooltip', "Reach "+shortenCosts(new Decimal("1e22000"))+" IP without any time studies. Reward: Time dimensions are multiplied by the number of studies you have.")
-    minaj.setAttribute('ach-tooltip', "Have 180 times more non-bonus replicanti galaxies than normal galaxies. Reward: Replicanti galaxies divide your replicanti by "+shortenMoney(Number.MAX_VALUE)+" instead of resetting them to 1.")
-    infstuff.setAttribute('ach-tooltip', "Reach "+shortenCosts(new Decimal("1e140000"))+" IP without buying IDs or IP multipliers. Reward: You start eternities with all Infinity Challenges unlocked and completed"+(player.meta?", and your infinity gain is multiplied by dilated time^(1/4).":"."))
-    when.setAttribute('ach-tooltip', "Reach "+shortenCosts( new Decimal("1e20000"))+" replicanti. Reward: You gain replicanti 2 times faster under "+shortenMoney(Number.MAX_VALUE)+" replicanti.")
-    thinking.setAttribute('ach-tooltip', "Eternity for "+shortenCosts( new Decimal("1e600"))+" EP in 1 minute or less while dilated.")
-    thisis.setAttribute('ach-tooltip', "Reach "+shortenCosts(new Decimal('1e20000'))+" IP without any time studies while dilated.")
-    stillamil.setAttribute('ach-tooltip',"Reach "+shortenCosts(1e6)+" black hole power.")
-    out.setAttribute('ach-tooltip',"Get more than "+shortenCosts(1e5)+" ex-dilation." + (player.aarexModifications.nguspV !== undefined ? " Reward: You can distribute ex-dilation from all dilation boosts." : ""))
-    ridNGud.setAttribute('ach-tooltip', "Reach "+shortenCosts(new Decimal("1e20000"))+" IP without any time studies or dilation upgrades while dilated.")
-    onlywar.setAttribute('ach-tooltip', "Reach "+shortenMoney(new Decimal('1e40000'))+" EP." + (player.aarexModifications.nguspV !== undefined ? " Reward: You can auto-buy dilation upgrades every 1 second if you have at least "+shortenMoney(new Decimal('1e40000'))+" EP." : ""))
-    thecap.setAttribute('ach-tooltip', "Get "+shortenDimensions(1e12)+" eternities. Reward: Eternity upgrade 2 uses a better formula.")
-    neverenough.setAttribute('ach-tooltip', "Reach "+shortenCosts( new Decimal("1e100000"))+" replicanti. Reward: You can buy max replicanti galaxies.")
-    harmony.setAttribute('ach-tooltip', player.meta?"Have at least 700 normal, replicanti, and free dilated galaxies. Reward: Galaxies are 0.1% stronger.":"Get the same number (at least 300) of normal, replicanti, and free galaxies.")
-    notenough.setAttribute('ach-tooltip', "Reach "+shorten(Number.MAX_VALUE)+" meta-antimatter.")
-    old.setAttribute('ach-tooltip', "Reach "+shortenCosts(Decimal.pow(10,3*86400*365.2425*2019))+" antimatter.")
-    rid.setAttribute('ach-tooltip', "Reach "+shortenCosts(new Decimal("1e400000"))+" IP while dilated without having studies and electrons. Reward: Generate time theorems based on your best-ever tachyon particles.")
-    tfms.setAttribute('ach-tooltip', "Reward: Start with "+shortenCosts(1e13)+" eternities.")
-    tms.setAttribute('ach-tooltip', "Reward: Start with "+shortenCosts(1e25)+" meta-antimatter on reset.")
-    tfms2.setAttribute('ach-tooltip', "Reward: Start with "+shortenCosts(1e100)+" dilated time and dilated time does not reset until quantum.")
-    memories.setAttribute('ach-tooltip', "Reach "+shortenCosts(new Decimal("1e1700"))+" MA without having Normal Dimensions 5-8 and without having more than 4 Dimension Boosts.")
-    squared.setAttribute('ach-tooltip', "Reach "+shortenCosts(new Decimal("1e1500"))+" MA with exactly 8 meta-dimension boosts.")
-    seriously.setAttribute('ach-tooltip', "Reach "+shortenCosts(new Decimal("1e354000"))+" IP without having time studies while dilated and running QC2.")
-    internal.setAttribute('ach-tooltip', "Reach "+shortenCosts(new Decimal("1e333"))+" MA without having second meta dimensions and meta dimension boosts.")
-    truth.setAttribute('ach-tooltip', "Reach "+shortenCosts(Decimal.pow(10,788e11))+" antimatter without having completed paired challenges.")
-    cantGet.setAttribute('ach-tooltip', "Reach "+shortenCosts(Decimal.pow(10,62e10))+" antimatter in Eternity Challenge 11.")
-    noDil.setAttribute('ach-tooltip', "Reach "+shortenCosts(Decimal.pow(10,2e6))+" replicanti without having Tachyon particles. Reward: Start quantums with the same amount of Tachyon particles as square root of your best TP.")
-    dontWant.setAttribute('ach-tooltip', "Reach "+shorten(Decimal.pow(Number.MAX_VALUE,1000))+" IP while dilated, in QC2, and without having studies and First Dimensions during your current Eternity.")
-    notrelative.setAttribute('ach-tooltip', "Get "+shorten(Decimal.pow(10,411))+" dilated time without gaining tachyon particles.")
-    error404.setAttribute('ach-tooltip', "Get "+shorten(Decimal.pow(10,16e11))+" antimatter without having all types of non-First Dimensions and at least 2 normal galaxies.")
-    ie.setAttribute('ach-tooltip', "Get "+shorten(Decimal.pow(10,8e6))+" antimatter in a PC with QC6 & QC8 combination.")
-    wasted.setAttribute('ach-tooltip', "Get "+shorten(11e6)+" TT without having generated TTs, gaining your TTs back, and respeccing studies. Reward: Time Theorems production is 10x faster until you have 1 hour worth of normal TT production.")
-    stop.setAttribute('ach-tooltip', "Get the replicanti reset requirement to "+shorten(Decimal.pow(10,125e5))+". Reward: Getting a normal replicant manually doesn't reset your replicanti and can be autoed.")
-    dying.setAttribute('ach-tooltip', "Reach "+shorten(Decimal.pow(10, 275e3))+" IP while dilated, in PC6+8, and without having studies.")
-    gofast.setAttribute('ach-tooltip', "Get "+shorten(Decimal.pow(10, 1185))+" EP first and then double that by disabling dilation while big ripped.")
-	immunity.setAttribute('ach-tooltip', "Get "+shorten(Decimal.pow(10, 8e7))+" antimatter with one normal galaxy while in Eternity Challenge 7 and big ripped.")
-    notSmart.setAttribute('ach-tooltip', "Get "+shorten(1e215)+" Time Shards without having time study 11 while big ripped.")
-    soLife.setAttribute('ach-tooltip', "Reach "+shortenCosts(Decimal.pow(10, 35e4))+" IP in Big Rip while dilated, with no EP multiplier upgrades and time studies.")
-    finite.setAttribute('ach-tooltip', "Get "+shortenCosts(1e33)+" Space Shards without Breaking Eternity.")
-    really.setAttribute('ach-tooltip', "Undo Big Rip with at least "+shortenCosts(Decimal.pow(10, 1e5))+" matter.")
-    willenough.setAttribute('ach-tooltip', "Reach "+shortenCosts(Decimal.pow(10,player.aarexModifications.ngudpV?268435456:36000000))+" replicanti."+(player.aarexModifications.ngudpV&&!player.aarexModifications.ngumuV?" Reward: You keep Black Hole Dimensions on Quantum.":""))
-    pls.setAttribute('ach-tooltip', "Reach "+shortenCosts(Decimal.pow(10, 95e4))+" IP in Big Rip while dilated, with no EP multiplier upgrades, time studies, and Break Eternity. Reward: Each time you become a ghost, you gain "+shortenDimensions(2e3)+" galaxies worth of all generations of neutrinos, multiplied by your best-ever galaxy amount in all Big Rips.")
-    bm1.setAttribute('ach-tooltip', "Reward: Start Ghostifies with all Speedrun Milestones and all "+shorten(Number.MAX_VALUE)+" QK features unlocked, all Paired Challenges completed, all Big Rip upgrades bought, Nanofield is 2x faster until you reach 16 rewards, and you get quarks based on your best MA this quantum.")
-    bm10.setAttribute('ach-tooltip', "Reward: Start Ghostifies with 10 of Fourth Emperor Dimensions"+(player.aarexModifications.ngudpV?" and start Big Rips with 3rd row of Eternity upgrades.":"."))
-    bm14.setAttribute('ach-tooltip', "Reward: Start Ghostifies with "+shortenCosts(1e25)+" Quark Spins and Branches are 10x faster.")
-    uc.setAttribute('ach-tooltip', "Become a ghost with at least "+shortenCosts(Decimal.pow(10, 22e4))+" EP without starting Eternity Challenge 10 while Big Ripped.")
-    mi.setAttribute('ach-tooltip', "Get "+shorten(Number.MAX_VALUE)+" infinitied stat. Reward: You gain banked infinites and eternities when you either go quantum or Big Rip the universe without having to gain infinitied and eternitied.")
-    wd.setAttribute('ach-tooltip', "Get "+shortenCosts(Decimal.pow(10, 1e12))+" Infinity Unstable Quarks for each Branch without Big Ripping.")
-    arent.setAttribute('ach-tooltip', "Reach "+shortenCosts(Decimal.pow(10, 18e5))+" IP while dilated and big ripped and without having studies, EP mult upgrades, Tree Upgrades, and Break Eternity.")
-    ee.setAttribute('ach-tooltip', "Get "+shorten(Number.MAX_VALUE)+" eternitied stat.")
-    oc.setAttribute('ach-tooltip', "Become a ghost with at least "+shortenCosts(Decimal.pow(10, 375e3))+" EP while Big Ripped with Anti-Dilation modifier.")
-    btco.setAttribute('ach-tooltip', "Get a Paired Challenge 1 reward after you get "+shortenCosts(Decimal.pow(10, 165e7))+" antimatter in Quantum Challenges 6 and 8.")
-    tdc.setAttribute('ach-tooltip', "Complete Eternity Challenge 11 with "+shortenCosts(Decimal.pow(10, 15500))+" IP in a Paired Challenge with Quantum Challenges 6 and 8 combinations and Anti-Dilation modifier.")
-    igu.setAttribute('ach-tooltip', "Reach "+shortenCosts(Decimal.pow(10, 225e3))+" IP while dilated and big ripped with Anti-Dilation modifier and without having studies, EP mult upgrades, Tree Upgrades, and Break Eternity.")
+    alot.setAttribute('ach-tooltip', "购买1个维度2."+(player.aarexModifications.ngmX>3?" 奖励: 获得时间碎片的速度增幅100x.":""))
+    ndial.setAttribute('ach-tooltip', "正好拥有99个维度8. 奖励: 维度8增强10%"+(player.tickspeedBoosts==undefined?".":" 且基于维度8和时间间隔提升获得更多的星系点数."));
+    apocAchieve.setAttribute('ach-tooltip', "获得超过 " + formatValue(player.options.notation, 1e80, 0, 0) + " 反物质.");
+    gal.setAttribute('ach-tooltip', '购买1个反物质星系. '+(player.aarexModifications.ngmX>3?"Reward: Upon a Time Dimension Boost, your Dimension Boosts don’t reset unless you have more Time Dimension Boosts than your Dimension Boosts.":''));
+    doubleGal.setAttribute('ach-tooltip', '购买2个反物质星系. '+(player.tickspeedBoosts!==undefined?"Reward: Upon a Tickspeed Boost, your Dimension Boosts"+(player.aarexModifications.ngmX>3?" and Time Dimension Boosts":"")+" don’t reset unless you have more Tickspeed Boosts than five times your Antimatter Galaxies minus eight.":'')+(player.aarexModifications.ngmX>3?" You start with 3 Time Dimension Boosts.":""));
+    claustrophobic.setAttribute('ach-tooltip', "只拥有1个星系的情况下到达无限. 奖励: 初始时间间隔增加 2%"+(player.galacticSacrifice&&player.tickspeedBoosts==undefined?" 无限时保留星系升级.":"."));
+    noPointAchieve.setAttribute('ach-tooltip', "当你拥有超过 " + formatValue(player.options.notation, 1e150, 0, 0) + " 维度1时再购买1个. 奖励: 维度1增强10%"+(player.tickspeedBoosts==undefined?".":" 且你可以购买最大维度和时间间隔提升."));
+    forgotAchieve.setAttribute('ach-tooltip', "使任意一个维度的倍率超过 " + formatValue(player.options.notation, 1e31, 0, 0)) + ". 奖励: 维度1增强5%.";
+    sanic.setAttribute('ach-tooltip', "使你的每秒获得的反物质数量超过你当前的反物质数量 " + formatValue(player.options.notation, 1e63, 0, 0));
+    infinity.setAttribute('ach-tooltip', "到达无限反物质. 奖励: 开始游戏时拥有100个反物质"+(player.galacticSacrifice?" 并且始终拥有至少10x更便宜的维度提升费用.":"."));
+    nerf.setAttribute('ach-tooltip',"使任意一个维度的倍率超过 "+shortenCosts(1e31)+". 奖励: 维度1增强5%.")
+    didnt.setAttribute('ach-tooltip',"到达无限时拥有0个维度8. 奖励: 维度1~7增强 2"+(player.galacticSacrifice?"x":"%")+" .")
+    fast.setAttribute('ach-tooltip', "2小时内到达无限. 奖励: 开始游戏时拥有 "+shortenCosts(1e3)+" 反物质"+(player.galacticSacrifice?" and get a multiplier to galaxy points based on fastest infinity (5 hours / x, 10x softcap).":"."));
+    lot.setAttribute('ach-tooltip', "到达无限10次."+(player.galacticSacrifice?" 奖励: "+(player.tickspeedBoosts==undefined?"Start infinity with galaxy points based on your infinities (x^2/100).":" Keep galaxy upgrades on infinity."):""));
+    cancer.setAttribute('ach-tooltip', "使用cancer计数法时购买10个星系."+(player.galacticSacrifice&&player.tickspeedBoosts==undefined?" Reward: Multiplier of IP based on number of galaxies bought in cancer notation.":""))
+    zero.setAttribute('ach-tooltip',"在挑战中,不购买维度转化/维度提升/星系到达无限. 奖励: 维度1~4增强25%"+(player.galacticSacrifice&&player.tickspeedBoosts==undefined?" and 1.25x to IP.":"."))
+    potato.setAttribute('ach-tooltip', "获得超过 " + formatValue(player.options.notation, 1e29, 0, 0) + " 时间间隔. 奖励: 开始游戏时降低时间间隔 2%.");
+    potato2.setAttribute('ach-tooltip', "获得超过 " + formatValue(player.options.notation, 1e58, 0, 0) + " 时间间隔. 奖励: 开始游戏时降低时间间隔 2%.");
+    potato3.setAttribute('ach-tooltip', "获得超过 "+shortenCosts(new Decimal("1e8296262"))+" 时间间隔." + (player.galacticSacrifice !== undefined ? " Reward: Galaxy boost to Galaxy points gain is buffed." : ""))
+    dimensional.setAttribute('ach-tooltip', "除了维度8以外所有维度到达 " + formatValue(player.options.notation, 1e12, 0, 0) + " .");
+    anti.setAttribute('ach-tooltip', "完成所有挑战. 奖励: 所有维度增强10%"+(player.galacticSacrifice&&player.tickspeedBoosts==undefined?" and tickspeed cost is also reduced based on dimension cost reduction.":"."))
+    forever.setAttribute('ach-tooltip', "1分钟内完成无限. 奖励: 开始游戏时拥有 "+shortenCosts(1e10)+" 反物质"+(player.galacticSacrifice&&player.tickspeedBoosts==undefined?" and multiplier to IP based on your best infinity time.":"."))
+    many.setAttribute('ach-tooltip', "3分钟内完成维度2自动化挑战. 奖励: 在无限开始的前3分钟内所有维度更强"+(player.tickspeedBoosts==undefined?".":" and you will gain 1% of GP you will gain per second."));
+    is.setAttribute('ach-tooltip', "3分钟内完成时间间隔自动化挑战.  奖励: 每10次购买维度的效果增加了 "+(player.tickspeedBoosts!=undefined?"is boosted based on your best time of Tickspeed Autobuyer challenge.":player.galacticSacrifice?"is x^(1.0666).":"+1%"))
+    limitBreak.setAttribute('ach-tooltip', "打破无限."+(player.galacticSacrifice&&player.tickspeedBoosts==undefined?" Reward: Multiplier to IP gain based on galaxies.":""))
+    oh.setAttribute('ach-tooltip', "到达 "+shortenCosts(1e8)+" IP/m."+(player.galacticSacrifice&&player.tickspeedBoosts==undefined?" Reward: Multiplier to GP based on log(IP).":""))
+    mil.setAttribute('ach-tooltip',"到达 "+shortenCosts(1e6)+" 无限力量."+(player.galacticSacrifice?" Reward: First Dimensions are "+shortenCosts(1e6)+" times stronger.":""))
+    right.setAttribute('ach-tooltip',"10秒内完成维度3自动化挑战. 奖励: 维度1增强 5"+(player.galacticSacrifice?"x":"0%")+" .")
+    not.setAttribute('ach-tooltip',"在星系自动化挑战中只拥有1个维度1,并且没有进行维度转移/提升/星系的情况下到达无限. 奖励: 维度1增强 "+(player.galacticSacrifice?909:3)+" .")
+    IPBelongs.setAttribute('ach-tooltip', "大坍塌获得超过 "+shortenCosts(1e150)+" IP. 奖励: IP获得增加至4倍.")
+    reference.setAttribute('ach-tooltip', "一次维度献祭中倍率超过"+shortenDimensions(Number.MAX_VALUE)+". 奖励: 维度献祭变得更强.")
+    infchall.setAttribute('ach-tooltip', "完成一个无限挑战."+(player.galacticSacrifice?" 奖励: Increase galaxy and "+(player.tickspeedBoosts===undefined?"g11":"Tickspeed Boost")+" effectiveness based on IC's completed.":""))
+    blink.setAttribute('ach-tooltip', "在0.2秒内到达无限. 奖励: 开始游戏时拥有 " + formatValue(player.options.notation, 1e25, 0, 0) + " 反物质,并且所有维度在无限后的0.3秒内增强.");
+    spare.setAttribute('ach-tooltip', "到达 " +formatValue(player.options.notation, new Decimal("1e35000"), 0, 0)+" 反物质. 奖励: 基于你未使用的反物质数量增幅所有维度的效果.");
+    cant.setAttribute('ach-tooltip', "使所有维度的倍率超过 "+shortenCosts(1e308)+". 奖励: 所有维度增强 10"+(player.galacticSacrifice?"x":"%")+" .")
+    newDim.setAttribute('ach-tooltip', "解锁无限维度4."+(player.boughtDims?"":" 奖励: 成就加成现在作用于无限维度."))
+    tables.setAttribute('ach-tooltip', "使维度8的倍率最高,维度7的倍率第二高以此类推. 奖励: 所有维度基于自身等级获得该数值的增强 (维度8增强 8"+(player.galacticSacrifice?"0":"")+"%, 维度7增强 7"+(player.galacticSacrifice?"0":"")+"%, 以此类推.)")
+    speed.setAttribute('ach-tooltip', "在2秒内大坍塌获得超过 "+shortenCosts(1e200)+" IP. 奖励: 所有维度在无限后的最初的5秒内获得极其显著的增强.")
+    speed2.setAttribute('ach-tooltip', "在20秒内大坍塌获得超过 "+shortenCosts(1e250)+" IP . 奖励: 所有维度在无限后的最初的60秒内获得极其显著的增强.")
+    overdrive.setAttribute('ach-tooltip', "大坍塌时超过 " + shortenCosts(1e300) + " IP/min. 奖励: 额外获得4倍IP.")
+    minute.setAttribute('ach-tooltip', "到达 " + shortenCosts(1e260) + " 无限力量. 奖励: 获得双倍无限力量.")
+    hell.setAttribute('ach-tooltip', "使所有无限挑战最佳时间之和低于5秒." + (player.boughtDims ? " 奖励: 稍微增强维度献祭的效果." : ""))
+    zerodeg.setAttribute('ach-tooltip', "解锁无限维度8."+(player.boughtDims?" 奖励: 普通维度倍增x倍(x=无限维度8的数量).":""))
+    costco.setAttribute('ach-tooltip', "一次批量购买超过750个维度提升. 奖励: 维度提升变的 "+(player.boughtDims?"x便宜基于永恒点数.":"1% 更强 (对普通维度)."))
+    mile.setAttribute('ach-tooltip', "完成 "+(tmp.ngp3?"100 永恒里程碑.":"所有永恒里程碑."))
+    swarm.setAttribute('ach-tooltip', "15秒内获得10个复制品星系." + (player.boughtDims ? " Reward: Unlock replicanti galaxy power control." : ""))
+    inftime.setAttribute('ach-tooltip', player.boughtDims ? "不购买维度 1-7 到达永恒. 奖励: 时间维度增幅8次根号维度8数量." : "在1次永恒中获得来源于时间维度提供的308次时间间隔升级. 奖励: 时间间隔略微增幅时间维度.")
+    guide.setAttribute('ach-tooltip', player.boughtDims ? "到达 " + shortenCosts(new Decimal("1e1000000")) + " 复制品. 奖励: 基于复制品数量你获得复制品速度更快." : "10次无限内到达永恒.")
+    nine.setAttribute('ach-tooltip', "到达永恒时正好拥有9个复制品." + (player.boughtDims ? " 奖励: 复制品对无限维度的增幅提升 9%  (after time studies)." : ""))
+    infiniteIP.setAttribute('ach-tooltip', "到达 "+shortenCosts(new Decimal("1e30008"))+" IP." + (player.galacticSacrifice == undefined || player.tickspeedBoosts != undefined ? "" : " Reward: Your total galaxies boost Galaxy points gain more."))
+    fiveMore.setAttribute('ach-tooltip', "完成50个永恒挑战." + (player.galacticSacrifice !== undefined ? " Reward: Divide Infinity Dimension costs based on your g11 multiplier." : ""))
+    newI.setAttribute('ach-tooltip', "0.2秒内到达永恒." + (player.galacticSacrifice !== undefined ? " Reward: Dimension Boosts boost to Galaxy points gain is buffed." : ""))
+    over9000.setAttribute('ach-tooltip', "维度献祭的总倍率超过 "+shortenCosts(new Decimal("1e9000"))+". 奖励: 维度献祭不再重置维度.")
+    dawg.setAttribute('ach-tooltip', "过去的10次无限内每次获得的无限点数比上一次无限多 "+shortenMoney(Number.MAX_VALUE)+" 倍. 奖励: 维度提升/星系不再重置反物质.")
+    eatass.setAttribute('ach-tooltip', "不购买维度1并且不进行无限到达 "+shortenCosts(1e100)+" IP . 奖励: 基于本轮无限花费的时间增幅无限点的获取.")
+    layer.setAttribute('ach-tooltip', "到达 "+shortenMoney(Number.MAX_VALUE)+" EP." + (player.galacticSacrifice !== undefined ? " Reward: Galaxy boost to Galaxy points gain is buffed." : ""))
+    fkoff.setAttribute('ach-tooltip', "不购买任何时间研究到达 "+shortenCosts(new Decimal("1e22000"))+" IP. 奖励: 时间维度的倍率乘以你拥有的时间研究数量.")
+    minaj.setAttribute('ach-tooltip', "复制星系(不包括奖励的额外复制星系)超过普通星系的180倍. 奖励: 获得复制品星系时复制品数量除以 "+shortenMoney(Number.MAX_VALUE)+" 而不是重置为 1.")
+    infstuff.setAttribute('ach-tooltip', "不购买无限维度和无限点数倍增到达 "+shortenCosts(new Decimal("1e140000"))+" IP . 奖励: 开始永恒时自动完成所有无限挑战"+(player.meta?", 并且你的永恒次数获取乘以膨胀时间^(1/4).":"."))
+    when.setAttribute('ach-tooltip', "到达 "+shortenCosts( new Decimal("1e20000"))+" 复制品. 奖励: 获得复制品的速度变为2倍 在复制品低于 "+shortenMoney(Number.MAX_VALUE)+" 时.")
+    thinking.setAttribute('ach-tooltip', "在膨胀时间中1分钟内永恒获得 "+shortenCosts( new Decimal("1e600"))+" EP .")
+    thisis.setAttribute('ach-tooltip', "在膨胀时间中不购买任何时间研究到达 "+shortenCosts(new Decimal('1e20000'))+" IP .")
+    stillamil.setAttribute('ach-tooltip',"到达 "+shortenCosts(1e6)+" 黑洞力量.")
+    out.setAttribute('ach-tooltip',"获得超过 "+shortenCosts(1e5)+" ex-膨胀时间." + (player.aarexModifications.nguspV !== undefined ? " Reward: You can distribute ex-dilation from all dilation boosts." : ""))
+    ridNGud.setAttribute('ach-tooltip', "在膨胀时间中不购买任何膨胀时间升级和时间研究获得超过 "+shortenCosts(new Decimal("1e20000"))+" IP .")
+    onlywar.setAttribute('ach-tooltip', "到达 "+shortenMoney(new Decimal('1e40000'))+" EP." + (player.aarexModifications.nguspV !== undefined ? " 奖励: 每秒你可以自动购买膨胀时间升级如果你的永恒点超过 "+shortenMoney(new Decimal('1e40000'))+" EP." : ""))
+    thecap.setAttribute('ach-tooltip', "拥有 "+shortenDimensions(1e12)+" 永恒次数. 奖励: 永恒升级2会用一个更好的公式.")
+    neverenough.setAttribute('ach-tooltip', "到达 "+shortenCosts( new Decimal("1e100000"))+" 复制品. 奖励: 你可以一次购买最大复制品星系.")
+    harmony.setAttribute('ach-tooltip', player.meta?"同时拥有至少700个普通星系/复制品星系/膨胀时间免费星系. 奖励: 星系增强10%.":"使普通星系/复制品星系/膨胀时间免费星系的数量刚好相同 (且不能低于300).")
+    notenough.setAttribute('ach-tooltip', "到达 "+shorten(Number.MAX_VALUE)+" 元反物质.")
+    old.setAttribute('ach-tooltip', "到达 "+shortenCosts(Decimal.pow(10,3*86400*365.2425*2019))+" 反物质.")
+    rid.setAttribute('ach-tooltip', "膨胀时间中不购买任何研究和电子到达 "+shortenCosts(new Decimal("1e400000"))+" IP . 奖励: 基于你最佳超光速粒子数量自动获得时间定理.")
+    tfms.setAttribute('ach-tooltip', "奖励: 开始游戏时拥有 "+shortenCosts(1e13)+" 永恒次数.")
+    tms.setAttribute('ach-tooltip', "奖励: 开始游戏时拥有 "+shortenCosts(1e25)+" 元反物质.")
+    tfms2.setAttribute('ach-tooltip', "奖励: 开始游戏时拥有 "+shortenCosts(1e100)+" 膨胀时间,并且膨胀时间不会重置直到再次进入量子世界.")
+    memories.setAttribute('ach-tooltip', "在不拥有普通维度5~8,切不拥有超过4个维度提升的情况下到达 "+shortenCosts(new Decimal("1e1700"))+" 元反物质.")
+    squared.setAttribute('ach-tooltip', "在刚好拥有8个元维度提升的情况下到达 "+shortenCosts(new Decimal("1e1500"))+" 元反物质.")
+    seriously.setAttribute('ach-tooltip', "在量子挑战2中,开启膨胀时间并且不购买任何时间研究的情况下到达 "+shortenCosts(new Decimal("1e354000"))+" IP .")
+    internal.setAttribute('ach-tooltip', "在不购买元维度2和元维度提升到情况下到达"+shortenCosts(new Decimal("1e333"))+" 元反物质.")
+    truth.setAttribute('ach-tooltip', "在未完成任何混合挑战情况下到达 "+shortenCosts(Decimal.pow(10,788e11))+" 反物质.")
+    cantGet.setAttribute('ach-tooltip', "在永恒挑战11中到达 "+shortenCosts(Decimal.pow(10,62e10))+" 反物质.")
+    noDil.setAttribute('ach-tooltip', "在不拥有超光速粒子的情况下到达 "+shortenCosts(Decimal.pow(10,2e6))+" 复制品. 奖励: 进入量子世界的时获得超光速粒子,数量为历史最佳超光速粒子的平方根.")
+    dontWant.setAttribute('ach-tooltip', "在量子挑战2中,不购买任何时间研究和维度1,开启膨胀时间,到达 "+shorten(Decimal.pow(Number.MAX_VALUE,1000))+" IP during your current Eternity.")
+    notrelative.setAttribute('ach-tooltip', "在不获得超光速粒子的情况下获得 "+shorten(Decimal.pow(10,411))+" 膨胀时间.")
+    error404.setAttribute('ach-tooltip', "在只能购买所有类型维度的维度1和最多2个普通星系情况下到达"+shorten(Decimal.pow(10,16e11))+" 反物质 (原文:without having all types of non-First Dimensions and at least 2 normal galaxies.")
+    ie.setAttribute('ach-tooltip', "在混合量子6+8挑战中到达 "+shorten(Decimal.pow(10,8e6))+" 反物质.")
+    wasted.setAttribute('ach-tooltip', "拥有 "+shorten(11e6)+" 时间定理 without having generated TTs, gaining your TTs back, and respeccing studies. Reward: Time Theorems production is 10x faster until you have 1 hour worth of normal TT production.")
+    stop.setAttribute('ach-tooltip', "使购买量子级复制品的需求到达 "+shorten(Decimal.pow(10,125e5))+"复制品. 奖励: 不再重置你的复制品数量并且可以自动购买.")
+    dying.setAttribute('ach-tooltip', "在混合挑战6+8中,不购买任何时间研究到达 "+shorten(Decimal.pow(10, 275e3))+" IP .")
+    gofast.setAttribute('ach-tooltip', "在撕裂宇宙中,禁用膨胀时间.先到达"+shorten(Decimal.pow(10, 1185))+" EP 然后再翻倍(不清楚是数字翻倍还是指数翻倍..).")
+	immunity.setAttribute('ach-tooltip', "在撕裂宇宙中,开启永恒挑战7,在只拥有1个普通星系的情况下到达"+shorten(Decimal.pow(10, 8e7))+" 反物质.")
+    notSmart.setAttribute('ach-tooltip', "在撕裂宇宙中,不购买时间研究11的情况下到达 "+shorten(1e215)+" 时间碎片.")
+    soLife.setAttribute('ach-tooltip', "在撕裂宇宙中,开启膨胀时间,在不购买EP点倍增和时间研究的情况下到达 "+shortenCosts(Decimal.pow(10, 35e4))+" IP .")
+    finite.setAttribute('ach-tooltip', "在不打破永恒的情况下获得超过 "+shortenCosts(1e33)+" 空间碎片.")
+    really.setAttribute('ach-tooltip', "完成撕裂宇宙时拥有至少 "+shortenCosts(Decimal.pow(10, 1e5))+" 正物质.")
+    willenough.setAttribute('ach-tooltip', "到达 "+shortenCosts(Decimal.pow(10,player.aarexModifications.ngudpV?268435456:36000000))+" 复制品."+(player.aarexModifications.ngudpV&&!player.aarexModifications.ngumuV?" 奖励: 进入量子世界后会保留你的黑洞.":""))
+    pls.setAttribute('ach-tooltip', "在撕裂宇宙中,开启膨胀时间,不购买EP点倍增器,时间研究,不打破永恒的情况下到达 "+shortenCosts(Decimal.pow(10, 95e4))+" IP . 奖励: 每次完成幽灵化, 你会获得 "+shortenDimensions(2e3)+" galaxies worth of all generations of neutrinos, multiplied by your best-ever galaxy amount in all Big Rips.")
+    bm1.setAttribute('ach-tooltip', "奖励: 幽灵化后保持所有量子竞速里程碑和全部 "+shorten(Number.MAX_VALUE)+" 夸克内容解锁, 所有混合量子挑战自动完成, 所有撕裂宇宙升级已购买, 纳米领域获得16个奖励之前速度翻倍, 基于你本轮最多元维度反物质自动获得夸克点数.")
+    bm10.setAttribute('ach-tooltip', "奖励: 幽灵化后拥有10个帝国维度4"+(player.aarexModifications.ngudpV?" 和开始撕裂宇宙时拥有第三行永恒升级.":"."))
+    bm14.setAttribute('ach-tooltip', "奖励: 幽灵化后拥有 "+shortenCosts(1e25)+" 自旋夸克和10倍分枝速度.")
+    uc.setAttribute('ach-tooltip', "完成幽灵化并且拥有最少 "+shortenCosts(Decimal.pow(10, 22e4))+" EP 在撕裂宇宙挑战中并且不再永恒挑战10中.")
+    mi.setAttribute('ach-tooltip', "拥有 "+shorten(Number.MAX_VALUE)+" 无限次数. 奖励: 在你进入量子或撕裂宇宙时,分别获得储存的无限次数/永恒次数.")
+    wd.setAttribute('ach-tooltip', "在不进行撕裂宇宙中,每个分枝拥有 "+shortenCosts(Decimal.pow(10, 1e12))+" 无限不稳定夸克.")
+    arent.setAttribute('ach-tooltip', "在撕裂宇宙中,开启膨胀时间,不进行任何时间研究,不购买EP倍增器,树升级和打破永恒的前提下到达 "+shortenCosts(Decimal.pow(10, 18e5))+" IP.")
+    ee.setAttribute('ach-tooltip', "拥有 "+shorten(Number.MAX_VALUE)+" 永恒次数.")
+    oc.setAttribute('ach-tooltip', "在撕裂宇宙中,且开启了反膨胀时间拥有至少 "+shortenCosts(Decimal.pow(10, 375e3))+" EP 时进行幽灵化.")
+    btco.setAttribute('ach-tooltip', "当你在量子挑战6和8中,到达 "+shortenCosts(Decimal.pow(10, 165e7))+" 反物质后获得混合挑战1的奖励.")
+    tdc.setAttribute('ach-tooltip', "在混合挑战6+8中,开启反膨胀时间完成永恒挑战11且拥有超过 "+shortenCosts(Decimal.pow(10, 15500))+" IP .")
+    igu.setAttribute('ach-tooltip', "在撕裂宇宙中开启反膨胀时间,不(购买任何时间研究,EP获取倍增器,树升级,打破永恒)的情况下到达 "+shortenCosts(Decimal.pow(10, 225e3))+" IP.")
 }
 
 
@@ -4357,7 +4357,7 @@ function sacrifice(auto = false) {
 document.getElementById("sacrifice").onclick = function () {
     if (player.eightAmount.eq(0)) return false
     if (!document.getElementById("confirmation").checked) {
-        if (!confirm("Dimensional Sacrifice will remove all of your first to seventh dimensions (with the cost and multiplier unchanged) for a boost to Eighth Dimension. It will take time to regain production.")) {
+        if (!confirm("维度献祭将会失去你所有维度1~7的进度来给维度8加成,如果倍率够高会很快恢复生产.")) {
             return false;
         }
     }
@@ -5442,7 +5442,7 @@ function updateRespecButtons() {
 function eternity(force, auto, presetLoad, dilated) {
     var id7unlocked = player.infDimensionsUnlocked[7]
     if (tmp.ngp3) if (tmp.qu.bigRip.active) id7unlocked = true
-    if ((player.infinityPoints.gte(Number.MAX_VALUE) && id7unlocked && (!player.options.eternityconfirm || auto || confirm("Eternity will reset everything except achievements and challenge records. You will also gain an Eternity point and unlock various upgrades."))) || force === true) {
+    if ((player.infinityPoints.gte(Number.MAX_VALUE) && id7unlocked && (!player.options.eternityconfirm || auto || confirm("永恒将会失去你的大部分进度,保留成就和挑战最佳纪录,同时你会获得EP点解锁一些非常强大的升级."))) || force === true) {
         if (force) player.currentEternityChall = "";
         if (player.currentEternityChall !== "" && player.infinityPoints.lt(player.eternityChallGoal)) return false
         if (player.thisEternity<player.bestEternity && !force) {
@@ -6911,7 +6911,7 @@ function startDilatedEternity(auto, shortcut) {
     if (!player.dilation.studies.includes(1)) return
 	failsafeDilateTime = true
     var onActive = player.dilation.active
-    if (!onActive && player.aarexModifications.dilationConf && !auto) if (!confirm("Dilating time will start a new eternity, and all of your Dimension/Infinity Dimension/Time Dimension multiplier's exponents and tickspeed multiplier's exponent will be reduced to ^ 0.75. If you can eternity while dilated, you'll be rewarded with tachyon particles based on your antimatter and tachyon particles.")) return
+    if (!onActive && player.aarexModifications.dilationConf && !auto) if (!confirm("进入膨胀时间,你的普通维度/无限维度/时间维度/时间间隔的指数增幅降低到^0.75.在膨胀时间中到达永恒则会基于你目前的反物质(正相关)和已经拥有的超光速粒子(反相关)给予你超光速粒子")) return
     giveAchievement("I told you already, time is relative")
     if (tmp.ngp3) {
         if (onActive) player.eternityBuyer.statBeforeDilation++
@@ -7623,7 +7623,7 @@ setInterval(function() {
 	document.getElementById('replicantibulkmodetoggle').style.display=player.achievements.includes("ngpp16")?"inline-block":"none"
 
     if (speedrunMilestonesReached>notifyId) {
-        $.notify("You have unlocked "+timeDisplayShort(speedrunMilestones[notifyId]*36e3)+" speedrun milestone! "+(["You now start with 20,000 eternities when going quantum","You unlocked time theorem autobuyer","You now start with all Eternity Challenges completed and\neternity upgrades bought","You now start with dilation unlocked","You unlocked a new option for eternity autobuyer","You now start with all dilation studies and\nnon-rebuyable dilation upgrades before Meta Dimensions unlocked except passive TT gen upgrade","You unlocked first meta dimension autobuyer","You unlocked second meta dimension autobuyer","You unlocked third meta dimension autobuyer","You unlocked fourth meta dimension autobuyer","You unlocked fifth meta dimension autobuyer and you now keep time studies and passive TT gen upgrade","You unlocked sixth meta dimension autobuyer","You unlocked seventh meta dimension autobuyer","You unlocked eighth meta dimension autobuyer and\nall non-rebuyable dilation upgrades","You unlocked meta-dimension boost autobuyer","You now keep all time studies in mastery studies","You can now buy Meta Dimensions without buying the previous dimension","You now start with "+shortenCosts(1e13)+" eternities","You now start with "+shortenCosts(1e25)+" meta-antimatter on reset","You can now turn on automatic replicated galaxies anytime","You made rebuyable dilation upgrade and Meta Dimension autobuyers 3x faster","You now start with "+shortenCosts(1e100)+" dilated time on quantum and dilated time does not reset until quantum","You unlocked quantum autobuyer","You now keep replicanti on eternity","You unlocked manual mode for eternity autobuyer and sacrifice galaxy autobuyer","Your rebuyable dilation upgrade autobuyer now can buy max all upgrades","You now can buy max meta-dimension boosts and start with 4 meta-dimension boosts","For now on, you can gain banked infinities based on your post-crunch infinitied stat"])[notifyId]+".","success")
+        $.notify("你解锁了 "+timeDisplayShort(speedrunMilestones[notifyId]*36e3)+" 竞速里程碑! "+(["进入量子世界后开始游戏拥有20,000次永恒","解锁自动购买时间定理","自动完成所有永恒挑战和购买所有永恒升级","开始游戏时解锁膨胀时间","自动永恒解锁膨胀时间选项","开始游戏时拥有所有解锁元维度之前的膨胀时间研究(除了自动获得时间定律升级和可重复购买升级)","解锁元维度1自动化","解锁元维度2自动化","解锁元维度3自动化","解锁元维度4自动化","解锁元维度5自动化和保留时间研究以及自动获得时间定理升级","解锁元维度6自动化","解锁元维度7自动化","解锁元维度8自动化和保留所有除可重复升级的膨胀时间研究","解锁元维度提升自动化","保留专精研究","你可以直接购买元维度","开始游戏时拥有 "+shortenCosts(1e13)+" 永恒次数","开始游戏时拥有 "+shortenCosts(1e25)+" 元反物质","任何时候你都可以开启自动购买复制品星系","元维度/可重复购买的膨胀时间研究的自动化速度提升3倍","开始游戏时拥有 "+shortenCosts(1e100)+" 膨胀时间,并且直到进入量子世界膨胀时间不会重置","解锁自动进入量子世界","永恒时不再重置复制品数量","解锁更多的自动永恒模式以及自动献祭星系","可重复购买的膨胀时间研究自动化现在可以购买最大化","解锁批量购买最大元维度提升,和开始游戏时已拥有4次元维度提升","For now on, you can gain banked infinities based on your post-crunch infinitied stat"])[notifyId]+".","success")
         notifyId++
     }
     if (tmp.ngp3) {
@@ -8494,20 +8494,20 @@ function gameLoop(diff) {
 
 	if (document.getElementById("challenges").style.display == "block") {
 		if (document.getElementById("eternitychallenges").style.display == "block") {
-			document.getElementById("ec1reward").textContent = "Reward: "+shortenMoney(getECReward(1))+"x on all Time Dimensions (based on time spent this Eternity)"
-			document.getElementById("ec2reward").textContent = "Reward: Infinity power affects 1st Infinity Dimension with reduced effect, Currently: "+shortenMoney(getECReward(2))+"x"
-			document.getElementById("ec3reward").textContent = "Reward: Increase the multiplier for buying 10 dimensions, Currently: "+shorten(getDimensionPowerMultiplier(true,"no-QC5"))+"x"
-			document.getElementById("ec4reward").textContent = "Reward: Infinity Dimension multiplier from unspent IP, Currently: "+shortenMoney(getECReward(4))+"x"
-			document.getElementById("ec5reward").textContent = "Reward: Galaxy cost scaling starts "+getECReward(5)+" galaxies later."
-			document.getElementById("ec6reward").textContent = "Reward: Further reduce the dimension cost multiplier increase, Currently: "+player.dimensionMultDecrease.toFixed(1)+"x "
-			document.getElementById("ec7reward").textContent = "Reward: First Time dimension produces Eighth Infinity Dimensions, Currently: "+shortenMoney(DimensionProduction(9))+" per second. "
-			document.getElementById("ec8reward").textContent = "Reward: Infinity power powers up replicanti galaxies, Currently: " + (getECReward(8) * 100 - 100).toFixed(2) + "%"
-			document.getElementById("ec9reward").textContent = "Reward: Infinity Dimension multiplier based on time shards, Currently: "+shortenMoney(getECReward(9))+"x "
-			document.getElementById("ec10reward").textContent = "Reward: Time dimensions gain a multiplier from infinitied stat, Currently: "+shortenMoney(getECReward(10))+"x "
-			document.getElementById("ec11reward").textContent = "Reward: Further reduce the tickspeed cost multiplier increase, Currently: "+player.tickSpeedMultDecrease.toFixed(2)+"x "
-			document.getElementById("ec12reward").textContent = "Reward: Infinity Dimension cost multipliers are reduced. (x^"+getECReward(12)+")"
-			document.getElementById("ec13reward").textContent = "Reward: Increase the power of meta-antimatter. ("+(getECReward(13)+9)+"x)"
-			document.getElementById("ec14reward").textContent = "Reward: Free tickspeed upgrades increase IC3 reward "+getECReward(14).toFixed(0)+" times."
+			document.getElementById("ec1reward").textContent = "奖励: "+shortenMoney(getECReward(1))+"x 倍增强所有时间维度(基于本轮永恒花费的时间)"
+			document.getElementById("ec2reward").textContent = "奖励: 无限力量以较低的效果影响无限维度1, 当前: "+shortenMoney(getECReward(2))+"x"
+			document.getElementById("ec3reward").textContent = "奖励: 增加每购买10次维度的增幅倍率, 当前: "+shorten(getDimensionPowerMultiplier(true,"no-QC5"))+"x"
+			document.getElementById("ec4reward").textContent = "奖励: 基于未使用的IP点数增幅无限维度的倍率, 当前: "+shortenMoney(getECReward(4))+"x"
+			document.getElementById("ec5reward").textContent = "奖励: 遥远反物质星系延迟 "+getECReward(5)+" 个普通星系后到来."
+			document.getElementById("ec6reward").textContent = "奖励: 进一步降低维度升级费用增长的倍率, 当前: "+player.dimensionMultDecrease.toFixed(1)+"x "
+			document.getElementById("ec7reward").textContent = "奖励: 时间维度1现在会产出无限维度8, 当前: "+shortenMoney(DimensionProduction(9))+" 每秒. "
+			document.getElementById("ec8reward").textContent = "奖励: 无限力量增幅复制品星系的效率, 当前: " + (getECReward(8) * 100 - 100).toFixed(2) + "%"
+			document.getElementById("ec9reward").textContent = "奖励: 基于时间碎片数量增幅无限维度的倍率, 当前: "+shortenMoney(getECReward(9))+"x "
+			document.getElementById("ec10reward").textContent = "奖励: 基于无限次数增幅时间维度的倍率, 当前: "+shortenMoney(getECReward(10))+"x "
+			document.getElementById("ec11reward").textContent = "奖励: 进一步降低时间间隔升级费用增长的倍率, 当前: "+player.tickSpeedMultDecrease.toFixed(2)+"x "
+			document.getElementById("ec12reward").textContent = "奖励: 无限维度费用增长倍率降低了. (x^"+getECReward(12)+")"
+			document.getElementById("ec13reward").textContent = "奖励: 增加元反物质对维度提升的加成倍率. ("+(getECReward(13)+9)+"x)"
+			document.getElementById("ec14reward").textContent = "奖励: 免费的时间间隔升级增幅了永恒挑战3的奖励到"+getECReward(14).toFixed(0)+" 倍."
 
 			document.getElementById("ec10span").textContent = shortenMoney(ec10bonus) + "x"
 		}
@@ -8665,21 +8665,21 @@ function simulateTime(seconds, real, id) {
         autoBuyerTick();
     }
     closeToolTip()
-    var popupString = "While you were away"
-    if (player.money.gt(playerStart.money)) popupString+= ",<br> your antimatter increased "+shortenMoney(player.money.log10() - (playerStart.money).log10())+" orders of magnitude"
-    if (player.infinityPower.gt(playerStart.infinityPower) && !quantumed) popupString+= ",<br> infinity power increased "+shortenMoney(player.infinityPower.log10() - (Decimal.max(playerStart.infinityPower, 1)).log10())+" orders of magnitude"
-    if (player.timeShards.gt(playerStart.timeShards) && !quantumed) popupString+= ",<br> time shards increased "+shortenMoney(player.timeShards.log10() - (Decimal.max(playerStart.timeShards, 1)).log10())+" orders of magnitude"
-    if (storage.dt) if (player.dilation.dilatedTime.gt(storage.dt)) popupString+= ",<br> dilated time increased "+shortenMoney(player.dilation.dilatedTime.log10() - (Decimal.max(storage.dt, 1)).log10())+" orders of magnitude"
-    if (storage.bp) if (player.blackhole.power.gt(storage.bp)) popupString+= ",<br> black hole power increased "+shortenMoney(player.blackhole.power.log10() - (Decimal.max(storage.bp, 1)).log10())+" orders of magnitude"
-    if (storage.ma) if (player.meta.antimatter.gt(storage.ma)) popupString+= ",<br> meta-antimatter increased "+shortenMoney(player.meta.antimatter.log10() - (Decimal.max(storage.ma, 1)).log10())+" orders of magnitude"
+    var popupString = "当你离开游戏时"
+    if (player.money.gt(playerStart.money)) popupString+= ",<br> 你的反物质增加了 "+shortenMoney(player.money.log10() - (playerStart.money).log10())+" 个数量级"
+    if (player.infinityPower.gt(playerStart.infinityPower) && !quantumed) popupString+= ",<br> 无限力量增加了 "+shortenMoney(player.infinityPower.log10() - (Decimal.max(playerStart.infinityPower, 1)).log10())+" 个数量级"
+    if (player.timeShards.gt(playerStart.timeShards) && !quantumed) popupString+= ",<br> 时间碎片增加了 "+shortenMoney(player.timeShards.log10() - (Decimal.max(playerStart.timeShards, 1)).log10())+" 个数量级"
+    if (storage.dt) if (player.dilation.dilatedTime.gt(storage.dt)) popupString+= ",<br> 膨胀时间增加了 "+shortenMoney(player.dilation.dilatedTime.log10() - (Decimal.max(storage.dt, 1)).log10())+" 个数量级"
+    if (storage.bp) if (player.blackhole.power.gt(storage.bp)) popupString+= ",<br> 黑洞力量增加了 "+shortenMoney(player.blackhole.power.log10() - (Decimal.max(storage.bp, 1)).log10())+" 个数量级"
+    if (storage.ma) if (player.meta.antimatter.gt(storage.ma)) popupString+= ",<br> 元反物质增加了 "+shortenMoney(player.meta.antimatter.log10() - (Decimal.max(storage.ma, 1)).log10())+" 个数量级"
     if (storage.dt) {
-        if (tmp.qu.electrons.amount>storage.ec) popupString+= ",<br> electrons increased by "+getFullExpansion(Math.round(tmp.qu.electrons.amount-storage.ec))
-        if (tmp.qu.replicants.amount.gt(storage.nr)) popupString+= ",<br> normal replicants increased "+shortenMoney(tmp.qu.replicants.amount.log10() - (Decimal.max(storage.nr, 1)).log10())+" orders of magnitude"
+        if (tmp.qu.electrons.amount>storage.ec) popupString+= ",<br> 电子增加了 "+getFullExpansion(Math.round(tmp.qu.electrons.amount-storage.ec))
+        if (tmp.qu.replicants.amount.gt(storage.nr)) popupString+= ",<br> 普通复制品增加了 "+shortenMoney(tmp.qu.replicants.amount.log10() - (Decimal.max(storage.nr, 1)).log10())+" 个数量级"
     }
     if (player.infinitied > playerStart.infinitied || player.eternities > playerStart.eternities) popupString+= ","
     else popupString+= "."
-    if (player.infinitied > playerStart.infinitied) popupString+= "<br>you infinitied "+getFullExpansion(player.infinitied-playerStart.infinitied)+" times."
-    if (player.eternities > playerStart.eternities) popupString+= " <br>you eternitied "+getFullExpansion(player.eternities-playerStart.eternities)+" times."
+    if (player.infinitied > playerStart.infinitied) popupString+= "<br>你无限了 "+getFullExpansion(player.infinitied-playerStart.infinitied)+" 次."
+    if (player.eternities > playerStart.eternities) popupString+= " <br>你永恒了 "+getFullExpansion(player.eternities-playerStart.eternities)+" 次."
     if (popupString.length == 20) {
         popupString = popupString.slice(0, -1);
         popupString+= "... Nothing happened."
@@ -9332,7 +9332,7 @@ function resetUP() {
 function switchDecimalMode() {
 	if (confirm('You will change this option to '+(player.aarexModifications.breakInfinity?'logarithmica_numerus_lite':'break_infinity.min')+'.js. This requires a game reload. Are you sure you want to do that?')) {
 		player.aarexModifications.breakInfinity = !player.aarexModifications.breakInfinity
-		if (player.aarexModifications.breakInfinity && !player.aarexModifications.performanceTicks && confirm("WARNING: This will probably make this game laggy without Performance Ticks! Do you want to turn on Performance Ticks?")) player.aarexModifications.performanceTicks = true
+		if (player.aarexModifications.breakInfinity && !player.aarexModifications.performanceTicks && confirm("警告:这可能会使游戏变得十分卡顿,你确定真的要这样做吗?")) player.aarexModifications.performanceTicks = true
 		save_game(true)
 		document.location.reload(true)
 	}
