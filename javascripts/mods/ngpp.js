@@ -356,14 +356,14 @@ function updateAutoEterMode() {
 		modeText = "time"
 		modeCond = "Seconds between eternities:"
 	} else if (player.autoEterMode == "relative") {
-		modeText = "X times last eternity"
+		modeText = "比上次永恒多X倍ep"
 		modeCond = modeText + ":"
 	} else if (player.autoEterMode == "relativebest") {
 		modeText = "X times best of last 10"
         modeCond = modeText + " eternities:"
 	} else if (player.autoEterMode == "replicanti") {
 		modeText = "replicanti"
-		modeCond = "Amount of replicanti to wait until reset:"
+		modeCond = "到达X个复制品后重置:"
 	} else if (player.autoEterMode == "peak") {
 		modeText = "peak"
 		modeCond = "Seconds to wait after latest peak gain:"
@@ -462,7 +462,7 @@ function quantum(auto, force, challid, bigRip = false, quick) {
     if (player.masterystudies !== undefined) if (!auto && !force && tmp.qu.bigRip.active) force = true
 	if (!(isQuantumReached()||force)||implosionCheck) return
 	var headstart = player.aarexModifications.newGamePlusVersion > 0 && !player.masterystudies
-	if (player.aarexModifications.quantumConf&&!(auto||force)) if (!confirm(player.masterystudies?"Quantum will reset everything eternity resets, and "+(headstart?"also some other things like dilation":"also time studies, eternity challenges, dilation, "+(player.masterystudies?"meta dimensions, and mastery studies":"and meta dimensions"))+". You will gain a quark and unlock various upgrades.":"But wait! Quantum will erases almost everything that you have and rewards nothing! However, this is not a win. You need to reach real Infinite antimatter to win! (it's impossible)")) return
+	if (player.aarexModifications.quantumConf&&!(auto||force)) if (!confirm(player.masterystudies?"进入量子世界将会损失之前一切进度,包括"+(headstart?"时间膨胀":"时间研究,永恒挑战,时间膨胀, "+(player.masterystudies?"元维度,专精研究":"元维度"))+".但是你会获得夸克点数以及解锁一些更为强大的升级.":"But wait! Quantum will erases almost everything that you have and rewards nothing! However, this is not a win. You need to reach real Infinite antimatter to win! (it's impossible)")) return
 	if (!quantumed) if (!confirm("Are you sure you want to do that? You will lose everything you have!")) return
 	var pc=challid-8
 	if (player.masterystudies) {
@@ -482,10 +482,10 @@ function quantum(auto, force, challid, bigRip = false, quick) {
 					var qc1st = Math.min(qc1, qc2)
 					var qc2st = Math.max(qc1, qc2)
 					if (qc1st != 6 || qc2st != 8) return
-					if (tmp.qu.bigRip.conf && !auto) if (!confirm("Big ripping the universe starts PC6+8 with only quantum stuff. However, only dilation upgrades boost dilation except upgrades that multiply TP gain until you buy the eleventh upgrade. NOTE: If you can beat PC6+8, you will earn a grand reward. You can give your Time Theorems and Time Studies back by undoing Big Rip.")) return
+					if (tmp.qu.bigRip.conf && !auto) if (!confirm("撕裂宇宙开始于混合量子挑战6+8,在撕裂宇宙中你只剩下量子部分的加成.然而, only dilation upgrades boost dilation except upgrades that multiply TP gain until you buy the eleventh upgrade. 提示:如果你可以打通PC6+8,你将会获得强大的加成.同时你也可以通过撤销撕裂宇宙重新获取你的时间定理和时间研究等.")) return
 				}
 				if (pc > 0) {
-					if (player.options.challConf || (tmp.qu.pairedChallenges.completions.length < 1 && !ghostified)) if (!confirm("You will start a Quantum Challenge, but you need to do 2 challenges at one. Completing it boosts the rewards of Quantum Challenges that you chose in this Paired Challenge.")) return
+					if (player.options.challConf || (tmp.qu.pairedChallenges.completions.length < 1 && !ghostified)) if (!confirm("你将会开始一个量子挑战,而且同时包含了2种挑战的规则.完成该混合挑战会同时增幅你已选的2项量子挑战的奖励.")) return
 				} else if (player.options.challConf || (QCIntensity(1) == 0 && !ghostified)) if (!confirm("You will do a quantum reset but you will not gain quarks, and keep your electrons & sacrificed galaxies, and you can't buy electron upgrades. You have to reach the set goal of antimatter to complete this challenge. NOTE: Electrons and banked eternities do nothing in quantum challenges and your electrons and sacrificed galaxies do not reset until you end the challenge.")) return
 				tmp.qu.electrons.amount -= getQCCost(challid)
 				if (!quick) for (var m=0;m<qcm.on.length;m++) if (ranking>=qcm.reqs[qcm.on[m]]||!qcm.reqs[qcm.on[m]]) tmp.qu.qcsMods.current.push(qcm.on[m])
@@ -1412,7 +1412,7 @@ function quantumReset(force, auto, challid, bigRip, implode=false) {
 	}
 	document.getElementById("infinityPoints1").innerHTML = "You have <span class=\"IPAmount1\">"+shortenDimensions(player.infinityPoints)+"</span> Infinity points."
 	document.getElementById("infinityPoints2").innerHTML = "You have <span class=\"IPAmount2\">"+shortenDimensions(player.infinityPoints)+"</span> Infinity points."
-	document.getElementById("replicantireset").innerHTML = "Reset replicanti amount, but get a free galaxy<br>"+player.replicanti.galaxies + " replicated galaxies created."
+	document.getElementById("replicantireset").innerHTML = "重置复制品数量以获得一个复制品星系,当前拥有复制品星系数量是: <br>"+player.replicanti.galaxies + " ."
 	document.getElementById("eternitybtn").style.display = player.infinityPoints.gte(player.eternityChallGoal) ? "inline-block" : "none"
 	document.getElementById("eternityPoints2").style.display = "inline-block"
 	document.getElementById("eternitystorebtn").style.display = "inline-block"

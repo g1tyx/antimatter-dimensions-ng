@@ -1952,20 +1952,20 @@ function getNanofieldRewardEffect(id, effect) {
 
 function updateAutoQuantumMode() {
 	if (tmp.qu.autobuyer.mode == "amount") {
-		document.getElementById("toggleautoquantummode").textContent = "Auto quantum mode: amount"
-		document.getElementById("autoquantumtext").textContent = "Amount of QK to wait until reset:"
+		document.getElementById("toggleautoquantummode").textContent = "自动量子模式: 数量"
+		document.getElementById("autoquantumtext").textContent = "到达X QK自动量子:"
 	} else if (tmp.qu.autobuyer.mode == "relative") {
-		document.getElementById("toggleautoquantummode").textContent = "Auto quantum mode: X times last quantum"
-		document.getElementById("autoquantumtext").textContent = "X times last quantum:"
+		document.getElementById("toggleautoquantummode").textContent = "自动量子模式: 比上次量子获得X倍QK"
+		document.getElementById("autoquantumtext").textContent = "比上次量子多X倍QK:"
 	} else if (tmp.qu.autobuyer.mode == "time") {
-		document.getElementById("toggleautoquantummode").textContent = "Auto quantum mode: time"
-		document.getElementById("autoquantumtext").textContent = "Seconds between quantums:"
+		document.getElementById("toggleautoquantummode").textContent = "自动量子模式: 时间"
+		document.getElementById("autoquantumtext").textContent = "X秒后开始量子:"
 	} else if (tmp.qu.autobuyer.mode == "peak") {
-		document.getElementById("toggleautoquantummode").textContent = "Auto quantum mode: peak"
-		document.getElementById("autoquantumtext").textContent = "Seconds to wait after latest peak gain:"
+		document.getElementById("toggleautoquantummode").textContent = "自动量子模式: 峰值"
+		document.getElementById("autoquantumtext").textContent = "获得QK数量离开峰值后的X秒后量子:"
 	} else if (tmp.qu.autobuyer.mode == "dilation") {
-		document.getElementById("toggleautoquantummode").textContent = "Auto quantum mode: # of dilated"
-		document.getElementById("autoquantumtext").textContent = "Wait until # of dilated stat:"
+		document.getElementById("toggleautoquantummode").textContent = "自动量子模式: 完成X次膨胀时间"
+		document.getElementById("autoquantumtext").textContent = "完成X次膨胀时间后量子:"
 	}
 }
 
@@ -3182,7 +3182,7 @@ function getGHPGain() {
 ghostified = false
 function ghostify(auto, force) {
 	if (!force&&(!isQuantumReached()||!tmp.qu.bigRip.active||implosionCheck)) return
-	if (player.aarexModifications.ghostifyConf&&!auto&&!force) if(!confirm("Becoming a ghost resets everything quantum resets, and also resets your banked stats, best TP & MA, quarks, gluons, electrons, Quantum Challenges, Replicants, Nanofield, and Tree of Decay to gain a Ghost Particle. Are you ready for this?")) return
+	if (player.aarexModifications.ghostifyConf&&!auto&&!force) if(!confirm("成为幽灵你将会损失之前的一切进度,包括量子级别的,同时也会清除你储存的无限/永恒次数,最佳超光速粒子&元反物质,夸克,胶子,电子,量子挑战,复制品,纳米领域,衰变之树.但是你将会获得幽灵粒子.你准备好蜕变了吗?")) return
 	if (!ghostified) {
 		if (!confirm("Are you sure you want to do that? You will lose everything you have!")) return
 		if (!confirm("ARE YOU REALLY SURE YOU WANT TO DO THAT? YOU CAN'T UNDO THIS AFTER YOU BECAME A GHOST AND PASS THE UNIVERSE EVEN IT IS BIG RIPPED! THIS IS YOUR LAST CHANCE!")) return

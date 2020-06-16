@@ -2499,17 +2499,17 @@ function updateChallenges() {
 	document.getElementById("challenge7").parentElement.parentElement.style.display = player.infinitied < 1 && player.eternities < 1 && !quantumed ? "none" : ""
 	if (inQC(4)) {
 		document.getElementById("challenge7").className = "onchallengebtn";
-		document.getElementById("challenge7").textContent = "Trapped in"
+		document.getElementById("challenge7").textContent = "已坍塌"
 	}
 
 	if (inQC(6)) for (i=2;i<9;i++) if (i<3||i>5) {
 		document.getElementById("postc"+i).className = "onchallengebtn";
-		document.getElementById("postc"+i).textContent = "Trapped in"
+		document.getElementById("postc"+i).textContent = "已坍塌"
 	}
 
 	if (isIC3Trapped()) {
 		document.getElementById("postc3").className = "onchallengebtn";
-		document.getElementById("postc3").textContent = "Trapped in"
+		document.getElementById("postc3").textContent = "已坍塌"
 	}
 
 	if (player.postChallUnlocked > 0 || Object.keys(player.eternityChalls).length > 0 || player.eternityChallUnlocked !== 0) document.getElementById("challTabButtons").style.display = "table"
@@ -2878,7 +2878,7 @@ function updateInfCosts() {
         if (player.timestudy.studies.includes(131)) replGalOver += Math.floor(player.replicanti.gal / 2)
         document.getElementById("replicantimax").innerHTML = (player.replicanti.gal<3e3?"Max Replicanti galaxies":(player.replicanti.gal<58200?"Distant":"Ghostly")+" Replicated Galaxies")+": "+getFullExpansion(player.replicanti.gal)+(replGalOver > 1 ? "+" + getFullExpansion(replGalOver) : "")+"<br>+1 Cost: "+shortenCosts(getRGCost())+" IP"
         document.getElementById("replicantiunlock").innerHTML = "Unlock Replicantis<br>Cost: "+shortenCosts(player.galacticSacrifice!=undefined&&player.tickspeedBoosts==undefined?1e80:1e140)+" IP"
-        document.getElementById("replicantireset").innerHTML = "Reset replicanti amount, but get a free galaxy<br>" + getFullExpansion(player.replicanti.galaxies) + (extraReplGalaxies ? "+" + getFullExpansion(extraReplGalaxies) : "") + " replicated galax" + ((player.replicanti.galaxies + extraReplGalaxies) == 1 ? "y" : "ies") + " created."
+        document.getElementById("replicantireset").innerHTML = "重置复制品数量以获得一个复制品星系.<br>已拥有数量: " + getFullExpansion(player.replicanti.galaxies) + (extraReplGalaxies ? "+" + getFullExpansion(extraReplGalaxies) : "") + "" + ((player.replicanti.galaxies + extraReplGalaxies) == 1 ? "" : "") + " ."
 
         document.getElementById("replicantichance").className = (player.infinityPoints.gte(player.replicanti.chanceCost) && isChanceAffordable()) ? "storebtn" : "unavailablebtn"
         document.getElementById("replicantiinterval").className = (player.infinityPoints.gte(player.replicanti.intervalCost) && ((player.replicanti.interval !== 50) || player.timestudy.studies.includes(22)) && (player.replicanti.interval !== 1)) ? "storebtn" : "unavailablebtn"
@@ -5361,7 +5361,7 @@ function bigCrunch(autoed) {
         reduceDimCosts()
         setInitialDimensionPower();
 
-        document.getElementById("replicantireset").innerHTML = "Reset replicanti amount, but get a free galaxy<br>" + getFullExpansion(player.replicanti.galaxies) + (extraReplGalaxies ? "+" + getFullExpansion(extraReplGalaxies) : "") + " replicated galax" + ((player.replicanti.galaxies + extraReplGalaxies) == 1 ? "y" : "ies") + " created."
+        document.getElementById("replicantireset").innerHTML = "重置复制品数量以获得一个复制品星系.<br>已拥有数量: " + getFullExpansion(player.replicanti.galaxies) + (extraReplGalaxies ? "+" + getFullExpansion(extraReplGalaxies) : "") + "" + ((player.replicanti.galaxies + extraReplGalaxies) == 1 ? "" : "") + " ."
 
         if (player.achievements.includes("r36")) player.tickspeed = player.tickspeed.times(0.98);
         if (player.achievements.includes("r45")) player.tickspeed = player.tickspeed.times(0.98);
@@ -5918,7 +5918,7 @@ function eternity(force, auto, presetLoad, dilated) {
             document.getElementById("infmultbuyer").textContent = "Autobuy IP mult O"+(player.infMultBuyer?"N":"FF")
         }
         hideMaxIDButton()
-        document.getElementById("replicantireset").innerHTML = "Reset replicanti amount, but get a free galaxy<br>0 replicated galaxies created."
+        document.getElementById("replicantireset").innerHTML = "重置复制品数量以获得一个复制品星系.<br>已拥有数量: 0 ."
         document.getElementById("eternitybtn").style.display = player.infinityPoints.gte(player.eternityChallGoal) ? "inline-block" : "none"
         document.getElementById("eternityPoints2").style.display = "inline-block"
         document.getElementById("eternitystorebtn").style.display = "inline-block"
@@ -6224,7 +6224,7 @@ function startChallenge(name) {
 
     if (player.infinitied >= 10) giveAchievement("That's a lot of infinites");
 
-    document.getElementById("replicantireset").innerHTML = "Reset replicanti amount, but get a free galaxy<br>" + player.replicanti.galaxies + (extraReplGalaxies ? "+" + extraReplGalaxies : "") + " replicated galax" + ((player.replicanti.galaxies + extraReplGalaxies) == 1 ? "y" : "ies") + " created."
+    document.getElementById("replicantireset").innerHTML = "重置复制品数量以获得一个复制品星系.<br>已拥有数量: " + player.replicanti.galaxies + (extraReplGalaxies ? "+" + extraReplGalaxies : "") + "" + ((player.replicanti.galaxies + extraReplGalaxies) == 1 ? "" : "") + " ."
 
     resetInfDimensions();
     hideDimensions()
@@ -6880,7 +6880,7 @@ function startEternityChallenge(n) {
         document.getElementById("infmultbuyer").textContent = "Autobuy IP mult O"+(player.infMultBuyer?"N":"FF")
     }
     hideMaxIDButton()
-    document.getElementById("replicantireset").innerHTML = "Reset replicanti amount, but get a free galaxy<br>0 replicated galaxies created."
+    document.getElementById("replicantireset").innerHTML = "重置复制品数量以获得一个复制品星系.<br>已拥有数量: 0 ."
     document.getElementById("eternitybtn").style.display = player.infinityPoints.gte(player.eternityChallGoal) ? "inline-block" : "none"
     document.getElementById("eternityPoints2").style.display = "inline-block"
     document.getElementById("eternitystorebtn").style.display = "inline-block"
@@ -7104,7 +7104,7 @@ function getRebuyableDilUpgCost(id) {
 function updateDilationUpgradeCosts() {
 	for (var x=1; x<23; x++) if (isDilUpgUnlocked(x)) {
 		if (x == 3) document.getElementById("dil3cost").textContent = "Cost: " + formatValue(player.options.notation, getRebuyableDilUpgCost(3), 1, 1) + " dilated time"
-		else if (x == 2 && !canBuyGalaxyThresholdUpg()) document.getElementById("dil"+x+"cost").textContent = "Maxed out"
+		else if (x == 2 && !canBuyGalaxyThresholdUpg()) document.getElementById("dil"+x+"cost").textContent = "已售馨"
 		else document.getElementById("dil"+x+"cost").textContent = "Cost: " + shortenCosts(getDilUpgCost(x)) + " dilated time"
 	}
 	if (player.exdilation != undefined) document.getElementById("dil18oom").textContent = shortenCosts(new Decimal("1e1000"))
@@ -7665,7 +7665,7 @@ setInterval(function() {
             document.getElementById("welcomeMessage").innerHTML = "You are almost there for a supreme completion! However, completing this turns you to a ghost instead. This allows you to pass big rip universes and unlock new stuff! However, you need to lose everything too. Therefore, this is the sixth layer of NG+3."
         }
         if (player.masterystudies&&(player.masterystudies.includes("d14")||player.achievements.includes("ng3p51"))&&!player.aarexModifications.newGameMult&&!player.aarexModifications.newGameExpVersion&&!player.aarexModifications.ngudpV&&!player.aarexModifications.ngumuV&&!player.aarexModifications.nguepV&&!metaSave.ngp4) {
-            $.notify("Congratulations! You unlocked NG+4!", "success")
+            $.notify("恭喜你成功解锁了 NG+4!", "success")
             metaSave.ngp4=true
             localStorage.setItem(metaSaveId,btoa(JSON.stringify(metaSave)))
         }
@@ -8631,7 +8631,7 @@ function gameLoop(diff) {
 		player.timestudy.theorem += speed * (diff + Math.max(Math.min(player.achievements.includes("ng3p44") ? diff * 9 : 0, 3600 - player.timestudy.theorem / speed), 0)) / 10
     }
 
-    setAndMaybeShow("quantumClock", tmp.ngp3 ? (quantumed && tmp.qu.times > 1 && speedrunMilestonesReached < 28) : false, '"Quantum time: <b class=\'QKAmount\'>"+timeDisplayShort(tmp.qu.time)+"</b>"')
+    setAndMaybeShow("quantumClock", tmp.ngp3 ? (quantumed && tmp.qu.times > 1 && speedrunMilestonesReached < 28) : false, '"本轮量子世界已花费时间: <b class=\'QKAmount\'>"+timeDisplayShort(tmp.qu.time)+"</b>"')
 
     document.getElementById("infinityPoints1").innerHTML = "You have <span class=\"IPAmount1\">"+shortenDimensions(player.infinityPoints)+"</span> Infinity points."
     document.getElementById("infinityPoints2").innerHTML = "You have <span class=\"IPAmount2\">"+shortenDimensions(player.infinityPoints)+"</span> Infinity points."
