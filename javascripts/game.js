@@ -3995,7 +3995,7 @@ function setAchieveTooltip() {
     layer.setAttribute('ach-tooltip', "到达 "+shortenMoney(Number.MAX_VALUE)+" EP." + (player.galacticSacrifice !== undefined ? " Reward: Galaxy boost to Galaxy points gain is buffed." : ""))
     fkoff.setAttribute('ach-tooltip', "不购买任何时间研究到达 "+shortenCosts(new Decimal("1e22000"))+" IP. 奖励: 时间维度的倍率乘以你拥有的时间研究数量.")
     minaj.setAttribute('ach-tooltip', "复制星系(不包括奖励的额外复制星系)超过普通星系的180倍. 奖励: 获得复制品星系时复制品数量除以 "+shortenMoney(Number.MAX_VALUE)+" 而不是重置为 1.")
-    infstuff.setAttribute('ach-tooltip', "不购买无限维度和无限点数倍增到达 "+shortenCosts(new Decimal("1e140000"))+" IP . 奖励: 开始永恒时自动完成所有无限挑战"+(player.meta?", 并且你的永恒次数获取乘以膨胀时间^(1/4).":"."))
+    infstuff.setAttribute('ach-tooltip', "不购买无限维度和无限点数倍增到达 "+shortenCosts(new Decimal("1e140000"))+" IP . 奖励: 开始永恒时自动完成所有无限挑战"+(player.meta?", 并且你的无限次数获取乘以膨胀时间^(1/4).":"."))
     when.setAttribute('ach-tooltip', "到达 "+shortenCosts( new Decimal("1e20000"))+" 复制品. 奖励: 获得复制品的速度变为2倍 在复制品低于 "+shortenMoney(Number.MAX_VALUE)+" 时.")
     thinking.setAttribute('ach-tooltip', "在膨胀时间中1分钟内永恒获得 "+shortenCosts( new Decimal("1e600"))+" EP .")
     thisis.setAttribute('ach-tooltip', "在膨胀时间中不购买任何时间研究到达 "+shortenCosts(new Decimal('1e20000'))+" IP .")
@@ -4026,26 +4026,26 @@ function setAchieveTooltip() {
     wasted.setAttribute('ach-tooltip', "拥有 "+shorten(11e6)+" 时间定理 without having generated TTs, gaining your TTs back, and respeccing studies. Reward: Time Theorems production is 10x faster until you have 1 hour worth of normal TT production.")
     stop.setAttribute('ach-tooltip', "使购买量子级复制品的需求到达 "+shorten(Decimal.pow(10,125e5))+"复制品. 奖励: 不再重置你的复制品数量并且可以自动购买.")
     dying.setAttribute('ach-tooltip', "在混合挑战6+8中,不购买任何时间研究到达 "+shorten(Decimal.pow(10, 275e3))+" IP .")
-    gofast.setAttribute('ach-tooltip', "在撕裂宇宙中,禁用膨胀时间.先到达"+shorten(Decimal.pow(10, 1185))+" EP 然后再翻倍(不清楚是数字翻倍还是指数翻倍..).")
-	immunity.setAttribute('ach-tooltip', "在撕裂宇宙中,开启永恒挑战7,在只拥有1个普通星系的情况下到达"+shorten(Decimal.pow(10, 8e7))+" 反物质.")
-    notSmart.setAttribute('ach-tooltip', "在撕裂宇宙中,不购买时间研究11的情况下到达 "+shorten(1e215)+" 时间碎片.")
-    soLife.setAttribute('ach-tooltip', "在撕裂宇宙中,开启膨胀时间,在不购买EP点倍增和时间研究的情况下到达 "+shortenCosts(Decimal.pow(10, 35e4))+" IP .")
+    gofast.setAttribute('ach-tooltip', "在大撕裂中,禁用膨胀时间.先到达"+shorten(Decimal.pow(10, 1185))+" EP 然后再翻倍(不清楚是数字翻倍还是指数翻倍..).")
+	immunity.setAttribute('ach-tooltip', "在大撕裂中,开启永恒挑战7,在只拥有1个普通星系的情况下到达"+shorten(Decimal.pow(10, 8e7))+" 反物质.")
+    notSmart.setAttribute('ach-tooltip', "在大撕裂中,不购买时间研究11的情况下到达 "+shorten(1e215)+" 时间碎片.")
+    soLife.setAttribute('ach-tooltip', "在大撕裂中,开启膨胀时间,在不购买EP点倍增和时间研究的情况下到达 "+shortenCosts(Decimal.pow(10, 35e4))+" IP .")
     finite.setAttribute('ach-tooltip', "在不打破永恒的情况下获得超过 "+shortenCosts(1e33)+" 空间碎片.")
-    really.setAttribute('ach-tooltip', "完成撕裂宇宙时拥有至少 "+shortenCosts(Decimal.pow(10, 1e5))+" 正物质.")
+    really.setAttribute('ach-tooltip', "完成大撕裂时拥有至少 "+shortenCosts(Decimal.pow(10, 1e5))+" 正物质.")
     willenough.setAttribute('ach-tooltip', "到达 "+shortenCosts(Decimal.pow(10,player.aarexModifications.ngudpV?268435456:36000000))+" 复制品."+(player.aarexModifications.ngudpV&&!player.aarexModifications.ngumuV?" 奖励: 进入量子世界后会保留你的黑洞.":""))
-    pls.setAttribute('ach-tooltip', "在撕裂宇宙中,开启膨胀时间,不购买EP点倍增器,时间研究,不打破永恒的情况下到达 "+shortenCosts(Decimal.pow(10, 95e4))+" IP . 奖励: 每次完成幽灵化, 你会获得 "+shortenDimensions(2e3)+" galaxies worth of all generations of neutrinos, multiplied by your best-ever galaxy amount in all Big Rips.")
-    bm1.setAttribute('ach-tooltip', "奖励: 幽灵化后保持所有量子竞速里程碑和全部 "+shorten(Number.MAX_VALUE)+" 夸克内容解锁, 所有混合量子挑战自动完成, 所有撕裂宇宙升级已购买, 纳米领域获得16个奖励之前速度翻倍, 基于你本轮最多元维度反物质自动获得夸克点数.")
-    bm10.setAttribute('ach-tooltip', "奖励: 幽灵化后拥有10个帝国维度4"+(player.aarexModifications.ngudpV?" 和开始撕裂宇宙时拥有第三行永恒升级.":"."))
+    pls.setAttribute('ach-tooltip', "在大撕裂中,开启膨胀时间,不购买EP点倍增器,时间研究,不打破永恒的情况下到达 "+shortenCosts(Decimal.pow(10, 95e4))+" IP . 奖励: 每次完成幽灵化, 你会获得 "+shortenDimensions(2e3)+" galaxies worth of all generations of neutrinos, multiplied by your best-ever galaxy amount in all Big Rips.")
+    bm1.setAttribute('ach-tooltip', "奖励: 幽灵化后保持所有量子竞速里程碑和全部 "+shorten(Number.MAX_VALUE)+" 夸克内容解锁, 所有混合量子挑战自动完成, 所有大撕裂升级已购买, 纳米领域获得16个奖励之前速度翻倍, 基于你本轮最多元维度反物质自动获得夸克点数.")
+    bm10.setAttribute('ach-tooltip', "奖励: 幽灵化后拥有10个帝国维度4"+(player.aarexModifications.ngudpV?" 和开始大撕裂时拥有第三行永恒升级.":"."))
     bm14.setAttribute('ach-tooltip', "奖励: 幽灵化后拥有 "+shortenCosts(1e25)+" 自旋夸克和10倍分枝速度.")
-    uc.setAttribute('ach-tooltip', "完成幽灵化并且拥有最少 "+shortenCosts(Decimal.pow(10, 22e4))+" EP 在撕裂宇宙挑战中并且不再永恒挑战10中.")
-    mi.setAttribute('ach-tooltip', "拥有 "+shorten(Number.MAX_VALUE)+" 无限次数. 奖励: 在你进入量子或撕裂宇宙时,分别获得储存的无限次数/永恒次数.")
-    wd.setAttribute('ach-tooltip', "在不进行撕裂宇宙中,每个分枝拥有 "+shortenCosts(Decimal.pow(10, 1e12))+" 无限不稳定夸克.")
-    arent.setAttribute('ach-tooltip', "在撕裂宇宙中,开启膨胀时间,不进行任何时间研究,不购买EP倍增器,树升级和打破永恒的前提下到达 "+shortenCosts(Decimal.pow(10, 18e5))+" IP.")
+    uc.setAttribute('ach-tooltip', "完成幽灵化并且拥有最少 "+shortenCosts(Decimal.pow(10, 22e4))+" EP 在大撕裂挑战中并且不再永恒挑战10中.")
+    mi.setAttribute('ach-tooltip', "拥有 "+shorten(Number.MAX_VALUE)+" 无限次数. 奖励: 在你进入量子或大撕裂时,分别获得储存的无限次数/永恒次数.")
+    wd.setAttribute('ach-tooltip', "在不进行大撕裂中,每个分枝拥有 "+shortenCosts(Decimal.pow(10, 1e12))+" 无限不稳定夸克.")
+    arent.setAttribute('ach-tooltip', "在大撕裂中,开启膨胀时间,不进行任何时间研究,不购买EP倍增器,树升级和打破永恒的前提下到达 "+shortenCosts(Decimal.pow(10, 18e5))+" IP.")
     ee.setAttribute('ach-tooltip', "拥有 "+shorten(Number.MAX_VALUE)+" 永恒次数.")
-    oc.setAttribute('ach-tooltip', "在撕裂宇宙中,且开启了反膨胀时间拥有至少 "+shortenCosts(Decimal.pow(10, 375e3))+" EP 时进行幽灵化.")
+    oc.setAttribute('ach-tooltip', "在大撕裂中,且开启了反膨胀时间拥有至少 "+shortenCosts(Decimal.pow(10, 375e3))+" EP 时进行幽灵化.")
     btco.setAttribute('ach-tooltip', "当你在量子挑战6和8中,到达 "+shortenCosts(Decimal.pow(10, 165e7))+" 反物质后获得混合挑战1的奖励.")
     tdc.setAttribute('ach-tooltip', "在混合挑战6+8中,开启反膨胀时间完成永恒挑战11且拥有超过 "+shortenCosts(Decimal.pow(10, 15500))+" IP .")
-    igu.setAttribute('ach-tooltip', "在撕裂宇宙中开启反膨胀时间,不(购买任何时间研究,EP获取倍增器,树升级,打破永恒)的情况下到达 "+shortenCosts(Decimal.pow(10, 225e3))+" IP.")
+    igu.setAttribute('ach-tooltip', "在大撕裂中开启反膨胀时间,不(购买任何时间研究,EP获取倍增器,树升级,打破永恒)的情况下到达 "+shortenCosts(Decimal.pow(10, 225e3))+" IP.")
 }
 
 
@@ -7631,7 +7631,7 @@ setInterval(function() {
             tmp.qu.reached = true
             if (document.getElementById("welcome").style.display != "flex") document.getElementById("welcome").style.display = "flex"
             else player.aarexModifications.popUpId = ""
-            document.getElementById("welcomeMessage").innerHTML = "Congratulations! You reached 9.32e446 MA and then completed EC14 for the first time! You unlocked the fifth layer called Quantum! It comes after Dimension Boost, Antimatter Galaxy, Big Crunch, and Eternity. This allows you to get gigantic numbers!"
+            document.getElementById("welcomeMessage").innerHTML = "恭喜你!你已首次到达9.32e446元反物质以及完成了一次永恒挑战14!你解锁了继维度提升,反物质星系,大坍塌,永恒之后的第五层新的转生机制(量子世界)! 它会让你的反物质数量到达前所未有的高度!(注:第一次进入量子世界无论累计多少元反物质都只能获取1点夸克)"
         }
         if (tmp.qu.autoECN!==undefined) {
             justImported=true

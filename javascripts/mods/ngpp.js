@@ -353,36 +353,36 @@ function updateAutoEterMode() {
 	document.getElementById("priority13").disabled = false
 	document.getElementById("autoEterValue").disabled = false
 	if (player.autoEterMode == "time") {
-		modeText = "time"
-		modeCond = "Seconds between eternities:"
+		modeText = "时间"
+		modeCond = "X秒后开始永恒:"
 	} else if (player.autoEterMode == "relative") {
-		modeText = "比上次永恒多X倍ep"
-		modeCond = modeText + ":"
+		modeText = "比较级"
+		modeCond = "比上次永恒多X倍ep:"
 	} else if (player.autoEterMode == "relativebest") {
-		modeText = "X times best of last 10"
-        modeCond = modeText + " eternities:"
+		modeText = "最高级"
+        modeCond = "比最近10次永恒最高获取ep多X倍:"
 	} else if (player.autoEterMode == "replicanti") {
-		modeText = "replicanti"
-		modeCond = "到达X个复制品后重置:"
+		modeText = "复制品"
+		modeCond = "到达X复制品数量:"
 	} else if (player.autoEterMode == "peak") {
-		modeText = "peak"
-		modeCond = "Seconds to wait after latest peak gain:"
+		modeText = "峰值"
+		modeCond = "离开你ep增长峰值的X秒(后期最建议的):"
 	} else if (player.autoEterMode == "eternitied") {
-		modeText = "X times eternitied"
-		modeCond = modeText + ":"
+		modeText = "永恒次数"
+		modeCond = "可以获得X个永恒次数时重置:"
 	} else if (player.autoEterMode == "manual") {
-		modeText = "dilate only"
-		modeCond = "Does nothing to eternity"
+		modeText = "只进行膨胀时间"
+		modeCond = "不进行永恒"
 		document.getElementById("priority13").disabled = true
 		document.getElementById("autoEterValue").disabled = true
 	} else {
-		modeText = "amount"
-		modeCond = "Amount of EP to wait until reset:"
+		modeText = "数值"
+		modeCond = "可获取X个ep时:"
 	}
-	document.getElementById("toggleautoetermode").textContent = "Auto eternity mode: " + modeText
+	document.getElementById("toggleautoetermode").textContent = "自动永恒模式: " + modeText
 	document.getElementById("eterlimittext").textContent = modeCond
 	if (player.achievements.includes("ng3p52")) {
-		document.getElementById("autoEterMode").textContent = "Mode: " + modeText
+		document.getElementById("autoEterMode").textContent = "模式: " + modeText
 		document.getElementById("autoEterCond").textContent = modeCond
 	}
 }
@@ -482,7 +482,7 @@ function quantum(auto, force, challid, bigRip = false, quick) {
 					var qc1st = Math.min(qc1, qc2)
 					var qc2st = Math.max(qc1, qc2)
 					if (qc1st != 6 || qc2st != 8) return
-					if (tmp.qu.bigRip.conf && !auto) if (!confirm("撕裂宇宙开始于混合量子挑战6+8,在撕裂宇宙中你只剩下量子部分的加成.然而, only dilation upgrades boost dilation except upgrades that multiply TP gain until you buy the eleventh upgrade. 提示:如果你可以打通PC6+8,你将会获得强大的加成.同时你也可以通过撤销撕裂宇宙重新获取你的时间定理和时间研究等.")) return
+					if (tmp.qu.bigRip.conf && !auto) if (!confirm("大撕裂开始于混合量子挑战6+8,在大撕裂中你只剩下量子部分的加成.然而, only dilation upgrades boost dilation except upgrades that multiply TP gain until you buy the eleventh upgrade. 提示:如果你可以打通PC6+8,你将会获得强大的加成.同时你也可以通过撤销大撕裂重新获取你的时间定理和时间研究等.")) return
 				}
 				if (pc > 0) {
 					if (player.options.challConf || (tmp.qu.pairedChallenges.completions.length < 1 && !ghostified)) if (!confirm("你将会开始一个量子挑战,而且同时包含了2种挑战的规则.完成该混合挑战会同时增幅你已选的2项量子挑战的奖励.")) return

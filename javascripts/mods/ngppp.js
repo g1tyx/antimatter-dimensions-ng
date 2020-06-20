@@ -785,16 +785,16 @@ function updateQuantumTabs() {
 				document.getElementById("nanofieldreward" + reward + "tier").textContent = (rewards % 8 + 1 == reward ? "Next" : DISPLAY_NAMES[reward]) + " reward (" + getFullExpansion(Math.ceil((rewards + 1 - reward)/8)) + "): "
 			}
 			document.getElementById("nanofieldreward1").textContent = hasBosonicUpg(21) ? "Dimension Supersonic scaling starts " + getFullExpansion(getNanofieldRewardEffect(1, "supersonic")) + " later." :
-				"Hatch speed is " + shortenDimensions(getNanofieldRewardEffect(1, "speed")) + "x faster."
-			document.getElementById("nanofieldreward2").textContent = "Meta-antimatter effect power is increased by " + getNanofieldRewardEffect(2).toFixed(1) + "x."
-			document.getElementById("nanofieldreward3").textContent = "Free galaxy gain is increased by " + (getNanofieldRewardEffect(3)*100-100).toFixed(1) + "%."
-			document.getElementById("nanofieldreward4").textContent = "Dilated time boost to Meta Dimensions is increased to ^" + getNanofieldRewardEffect(4).toFixed(3) + "."
-			document.getElementById("nanofieldreward5").textContent = "While dilated, Normal Dimension multipliers and tickspeed are raised to the power of " + getNanofieldRewardEffect(5).toFixed(2) + "."
-			document.getElementById("nanofieldreward6").textContent = "Meta-dimension boost power is increased to " + getNanofieldRewardEffect(6).toFixed(2) + "x."
-			document.getElementById("nanofieldreward7").textContent = (hasBosonicUpg(22) ? "You gain " + shorten(getNanofieldRewardEffect(7, "neutrinos")) + "x more neutrinos" :
-				"Remote galaxy cost scaling starts " + getFullExpansion(getNanofieldRewardEffect(7, "remote")) + " later") +
-				" and the production of preon charge is " + shortenMoney(getNanofieldRewardEffect(7, "charge")) + "x faster."
-			document.getElementById("nanofieldreward8").textContent = "Add " + getNanofieldRewardEffect(8, "per-10").toFixed(2) + "x to multiplier per ten dimensions before getting affected by electrons and the production of preon energy is " + shortenMoney(getNanofieldRewardEffect(8, "energy")) + "x faster."
+				"孵化速度增快 " + shortenDimensions(getNanofieldRewardEffect(1, "speed")) + "倍."
+			document.getElementById("nanofieldreward2").textContent = "元反物质影响维度提升的指数增加 " + getNanofieldRewardEffect(2).toFixed(1) + "倍."
+			document.getElementById("nanofieldreward3").textContent = "免费星系获取数量增加 " + (getNanofieldRewardEffect(3)*100-100).toFixed(1) + "%."
+			document.getElementById("nanofieldreward4").textContent = "膨胀时间对元维度的增幅增加至^" + getNanofieldRewardEffect(4).toFixed(3) + "."
+			document.getElementById("nanofieldreward5").textContent = "在膨胀时间中,普通维度的倍增和时间间隔提升至 ^" + getNanofieldRewardEffect(5).toFixed(2) + "."
+			document.getElementById("nanofieldreward6").textContent = "元维度提升的效果提升至 ^" + getNanofieldRewardEffect(6).toFixed(2) + "x."
+			document.getElementById("nanofieldreward7").textContent = (hasBosonicUpg(22) ? "你获得 " + shorten(getNanofieldRewardEffect(7, "neutrinos")) + "x 倍更多的中微子" :
+				"遥远反物质星系延迟 " + getFullExpansion(getNanofieldRewardEffect(7, "remote")) + " 个普通星系后到来") +
+				" 并且前子充能的效率提升 " + shortenMoney(getNanofieldRewardEffect(7, "charge")) + " 倍."
+			document.getElementById("nanofieldreward8").textContent = "增加每10次购买维度的效率 " + getNanofieldRewardEffect(8, "per-10").toFixed(2) + "倍(计算于电子增幅之前) 并且前子能量产出增快 " + shortenMoney(getNanofieldRewardEffect(8, "energy")) + " 倍."
 
 			document.getElementById("ns").textContent = ghostified || tmp.ns.neq(1) ? "Nanofield speed multiplier is currently "+shorten(tmp.ns)+"x." : ""
 		}
@@ -873,12 +873,12 @@ function updateColorCharge() {
 	if (player.ghostify.milestones<2) {
 		document.getElementById("powerRate").textContent=shortenDimensions(colorCharge.charge)
 		if (colorCharge.charge.eq(0)) {
-			document.getElementById("colorCharge").innerHTML='neutral charge'
+			document.getElementById("colorCharge").innerHTML='(当前无偏向)'
 			document.getElementById("powerRate").className=''
 			document.getElementById("colorPower").textContent=''
 		} else {
 			var color=colorShorthands[colorCharge.color]
-			document.getElementById("colorCharge").innerHTML='<span class="'+color+'">'+color+'</span> charge of <span class="'+color+'" style="font-size:35px">' + shortenDimensions(colorCharge.charge) + "</span>"
+			document.getElementById("colorCharge").innerHTML='<span class="'+color+'">'+color+'</span> 净数量是 <span class="'+color+'" style="font-size:35px">' + shortenDimensions(colorCharge.charge) + "</span>"
 			document.getElementById("powerRate").className=color
 			document.getElementById("colorPower").textContent=color+' power'
 			document.getElementById("powerRate").parentElement.className=colorCharge.color+"qC"
@@ -4527,8 +4527,8 @@ function getAssignMult() {
 
 function updateColoredQuarksProduction() {
 	document.getElementById('coloredQuarksProduction').innerHTML = player.ghostify.milestones > 1 ?
-		"You are getting <span id='rPowerRate' style='font-size:35px' class='red'></span> red power, <span id='gPowerRate' style='font-size:35px' class='green'></span> green power, and <span id='bPowerRate' style='font-size:35px' class='blue'></span> blue power per second." :
-		"Your quarks have a net <span id='colorCharge'></span>, which produces <span id='powerRate' style='font-size:35px'></span> <span id='colorPower'></span> per second."
+		"你每秒获得 <span id='rPowerRate' style='font-size:35px' class='red'></span> 红色力量, <span id='gPowerRate' style='font-size:35px' class='green'></span> 绿色力量, 和 <span id='bPowerRate' style='font-size:35px' class='blue'></span> 蓝色力量." :
+		"你当前的夸克颜色偏向于<span id='colorCharge'></span>, 产生<span id='powerRate' style='font-size:35px'></span> <span id='colorPower'></span>每秒."
 }
 
 function showQCModifierStats(id) {
