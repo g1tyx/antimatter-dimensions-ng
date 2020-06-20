@@ -7655,7 +7655,7 @@ setInterval(function() {
         if (chall && player.money.gt(Decimal.pow(10, getQCGoal())) && player.meta.bestAntimatter.lt(Decimal.pow(Number.MAX_VALUE, 1.45)) && !tmp.qu.nonMAGoalReached.includes(chall)) {
             if (document.getElementById("welcome").style.display != "flex") document.getElementById("welcome").style.display = "flex"
             else player.aarexModifications.popUpId = ""
-            document.getElementById("welcomeMessage").innerHTML="You reached the antimatter goal ("+shorten(Decimal.pow(10, getQCGoal()))+"), but you didn't reach the meta-antimatter goal yet! Get "+shorten(Decimal.pow(Number.MAX_VALUE, 1.45))+" meta-antimatter"+(tmp.qu.bigRip.active?" and then you can become a ghost!":" and then go quantum to complete your challenge!")
+            document.getElementById("welcomeMessage").innerHTML="你已完成了该挑战的目标("+shorten(Decimal.pow(10, getQCGoal()))+"), 但你的元反物质不足以进入量子世界,请等待元反物质到达 "+shorten(Decimal.pow(Number.MAX_VALUE, 1.45))+" 然后"+(tmp.qu.bigRip.active?" 完成幽灵化!":" 进入新的一轮量子世界以完成挑战!")
             tmp.qu.nonMAGoalReached.push(chall)
         }
         if (!player.ghostify.reached && tmp.qu.bigRip.active) if (tmp.qu.bigRip.bestThisRun.gte(Decimal.pow(10, getQCGoal()))) {
