@@ -495,7 +495,7 @@ var cnItems = {
     'Infinity Challenges': '无限挑战',
     'Infinity Dimensions are disabled.': '你无法购买无限维度',
     'Infinity Dimensions can only be boosted by meta-antimatter. Meta-antimatter never boosts dimension boosts.': '无限维度现在只会增强元维度,且元维度不会增幅维度提升',
-    'Infinity Dimensions, Time Dimensions, and Meta-Dimension Boosts are disabled.': '无限维度/时间维度/元维度都被禁用了',
+    'Infinity Dimensions, Time Dimensions, and Meta-Dimension Boosts are disabled.': '无限维度/时间维度/元维度增幅被禁用了',
     'Infinity points.': '无限点数.',
     'IP': '无限点数',
     'Is active': '勾选以激活',
