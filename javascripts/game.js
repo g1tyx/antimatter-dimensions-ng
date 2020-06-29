@@ -7662,7 +7662,7 @@ setInterval(function() {
             player.ghostify.reached = true
             if (document.getElementById("welcome").style.display != "flex") document.getElementById("welcome").style.display = "flex"
             else player.aarexModifications.popUpId = ""
-            document.getElementById("welcomeMessage").innerHTML = "You are almost there for a supreme completion! However, completing this turns you to a ghost instead. This allows you to pass big rip universes and unlock new stuff! However, you need to lose everything too. Therefore, this is the sixth layer of NG+3."
+            document.getElementById("welcomeMessage").innerHTML = "你即将完成至高无上的壮举! 然而, 完成这项壮举会使你蜕变为幽灵. 允许你通过撕裂宇宙获得新的更强力的加成! 同时, 你将会失去之前的一切. 这是 NG+3 继量子之后的第6层转生系统."
         }
         if (player.masterystudies&&(player.masterystudies.includes("d14")||player.achievements.includes("ng3p51"))&&!player.aarexModifications.newGameMult&&!player.aarexModifications.newGameExpVersion&&!player.aarexModifications.ngudpV&&!player.aarexModifications.ngumuV&&!player.aarexModifications.nguepV&&!metaSave.ngp4) {
             $.notify("恭喜你成功解锁了 NG+4!", "success")

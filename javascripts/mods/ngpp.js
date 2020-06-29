@@ -739,7 +739,7 @@ function quantumReset(force, auto, challid, bigRip, implode=false) {
 			if (player.masterystudies !== undefined && tmp.qu.quarks.gte(Number.MAX_VALUE) && !tmp.qu.reachedInfQK) {
 				if (!ghostified) {
 					document.getElementById("welcome").style.display = "flex"
-					document.getElementById("welcomeMessage").innerHTML = "Congratulations for getting " + shorten(Number.MAX_VALUE) + " quarks! You have unlocked new QoL features, like quantum autobuyer modes, assign all, and auto-assignation!"
+					document.getElementById("welcomeMessage").innerHTML = "恭喜你到达 " + shorten(Number.MAX_VALUE) + " 夸克! 你解锁了新的提升游戏体验的选项, 例如新的自动量子模式, 平均分配夸克, 自动分配夸克!"
 					document.getElementById('assignAll').style.display=""
 				}
 				tmp.qu.reachedInfQK = true

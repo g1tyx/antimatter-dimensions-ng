@@ -1413,7 +1413,7 @@ var cnItems = {
     'Continue to mastery studies.': '切换至专精研究',
     'Convert W- to W+': '转化W-至W+',
     'Decay W Quark': '衰变W夸克',
-    'Every Quantum': '每次进入量子时间',
+    'Every Quantum': '每次进入量子世界',
     'Gain 1 Light Empowerment, but become a ghost and reset this mechanic.': '立即进行幽灵化,重置幽灵光子,但是获得1点光赋权.',
     'Ghostify: ON': '',
     'Ghostly Photons': '幽灵光子',
